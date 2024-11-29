@@ -35,4 +35,8 @@ class ItemsRow extends SupabaseDataRow {
 
   bool get needed => getField<bool>('needed')!;
   set needed(bool value) => setField<bool>('needed', value);
+
+  DateTime? get lastNeededAt => getField<DateTime>('last_needed_at');
+  set lastNeededAt(DateTime? value) =>
+      setField<DateTime>('last_needed_at', value);
 }

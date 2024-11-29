@@ -68,7 +68,6 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
             FlutterFlowIconButton(
               borderRadius: 8.0,
               buttonSize: 60.0,
-              fillColor: FlutterFlowTheme.of(context).primary,
               icon: Icon(
                 Icons.add_circle_outline,
                 color: FlutterFlowTheme.of(context).info,
@@ -79,6 +78,15 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
               },
             ),
           ],
+          flexibleSpace: FlexibleSpaceBar(
+            background: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                'assets/images/navbar_bg.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -109,11 +117,12 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
                   }
                   List<ItemsRow> listViewItemsRowList = snapshot.data!;
 
-                  return ListView.builder(
+                  return ListView.separated(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemCount: listViewItemsRowList.length,
+                    separatorBuilder: (_, __) => const SizedBox(height: 8.0),
                     itemBuilder: (context, listViewIndex) {
                       final listViewItemsRow =
                           listViewItemsRowList[listViewIndex];
@@ -124,125 +133,129 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Align(
-                                      alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          listViewItemsRow.name,
-                                          'ok',
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(-1.0, 0.0),
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            listViewItemsRow.name,
+                                            'ok',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .headlineMedium
+                                              .override(
+                                                fontFamily: 'Inter Tight',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .override(
-                                              fontFamily: 'Inter Tight',
-                                              letterSpacing: 0.0,
-                                            ),
                                       ),
-                                    ),
-                                    Align(
-                                      alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          listViewItemsRow.notes,
-                                          '...',
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(-1.0, 0.0),
+                                        child: Text(
+                                          valueOrDefault<String>(
+                                            listViewItemsRow.notes,
+                                            '...',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelMedium
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
                                       ),
-                                    ),
-                                    Align(
-                                      alignment: const AlignmentDirectional(1.0, 0.0),
-                                      child: Text(
-                                        valueOrDefault<String>(
-                                          listViewItemsRow.locations
-                                              .unique((e) => e)
-                                              .first,
-                                          '...',
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(1.0, 0.0),
+                                        child: Text(
+                                          listViewItemsRow.locations.first,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                letterSpacing: 0.0,
+                                              ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              letterSpacing: 0.0,
-                                            ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Theme(
-                                data: ThemeData(
-                                  checkboxTheme: const CheckboxThemeData(
-                                    visualDensity: VisualDensity.standard,
-                                    materialTapTargetSize:
-                                        MaterialTapTargetSize.padded,
-                                    shape: CircleBorder(),
-                                  ),
-                                  unselectedWidgetColor:
-                                      FlutterFlowTheme.of(context).alternate,
-                                ),
-                                child: Checkbox(
-                                  value: _model.checkboxValueMap[
-                                          listViewItemsRow] ??=
-                                      !listViewItemsRow.needed,
-                                  onChanged: (newValue) async {
-                                    safeSetState(() => _model.checkboxValueMap[
-                                        listViewItemsRow] = newValue!);
-                                    if (newValue!) {
-                                      // Mark Item As Needed
-                                      await ItemsTable().update(
-                                        data: {
-                                          'needed': false,
-                                        },
-                                        matchingRows: (rows) => rows.eqOrNull(
-                                          'id',
-                                          listViewItemsRow.id,
-                                        ),
-                                      );
-                                    } else {
-                                      // Mark Item As Aquired
-                                      await ItemsTable().update(
-                                        data: {
-                                          'needed': true,
-                                        },
-                                        matchingRows: (rows) => rows.eqOrNull(
-                                          'id',
-                                          listViewItemsRow.id,
-                                        ),
-                                      );
-                                    }
-                                  },
-                                  side: BorderSide(
-                                    width: 2,
-                                    color:
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Theme(
+                                  data: ThemeData(
+                                    checkboxTheme: const CheckboxThemeData(
+                                      visualDensity: VisualDensity.standard,
+                                      materialTapTargetSize:
+                                          MaterialTapTargetSize.padded,
+                                      shape: CircleBorder(),
+                                    ),
+                                    unselectedWidgetColor:
                                         FlutterFlowTheme.of(context).alternate,
                                   ),
-                                  activeColor:
-                                      FlutterFlowTheme.of(context).primary,
-                                  checkColor: FlutterFlowTheme.of(context).info,
+                                  child: Checkbox(
+                                    value: _model.checkboxValueMap[
+                                            listViewItemsRow] ??=
+                                        !listViewItemsRow.needed,
+                                    onChanged: (newValue) async {
+                                      safeSetState(() =>
+                                          _model.checkboxValueMap[
+                                              listViewItemsRow] = newValue!);
+                                      if (newValue!) {
+                                        // Mark Item As Needed
+                                        await ItemsTable().update(
+                                          data: {
+                                            'needed': false,
+                                          },
+                                          matchingRows: (rows) => rows.eqOrNull(
+                                            'id',
+                                            listViewItemsRow.id,
+                                          ),
+                                        );
+                                      } else {
+                                        // Mark Item As Aquired
+                                        await ItemsTable().update(
+                                          data: {
+                                            'needed': true,
+                                            'last_needed_at':
+                                                supaSerialize<DateTime>(
+                                                    getCurrentTimestamp),
+                                          },
+                                          matchingRows: (rows) => rows.eqOrNull(
+                                            'id',
+                                            listViewItemsRow.id,
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    side: BorderSide(
+                                      width: 2,
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                    ),
+                                    activeColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    checkColor:
+                                        FlutterFlowTheme.of(context).info,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       );
                     },

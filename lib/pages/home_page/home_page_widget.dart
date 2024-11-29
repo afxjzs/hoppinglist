@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
@@ -29,11 +28,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      context.pushNamed('AddItem');
-    });
 
     animationsMap.addAll({
       'listViewOnActionTriggerAnimation': AnimationInfo(
@@ -123,10 +117,19 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 size: 40.0,
               ),
               onPressed: () async {
-                context.pop();
+                context.pushNamed('AddItem');
               },
             ),
           ],
+          flexibleSpace: FlexibleSpaceBar(
+            background: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                'assets/images/navbar_bg.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -146,122 +149,142 @@ class _HomePageWidgetState extends State<HomePageWidget>
               ),
               Container(
                 decoration: const BoxDecoration(),
-                child: FutureBuilder<List<ItemsRow>>(
-                  future: ItemsTable().queryRows(
-                    queryFn: (q) => q.order('needed').order('name'),
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: FutureBuilder<List<ItemsRow>>(
+                    future: ItemsTable().queryRows(
+                      queryFn: (q) => q
+                          .order('needed')
+                          .order('last_needed_at')
+                          .order('name', ascending: true),
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                FlutterFlowTheme.of(context).primary,
+                              ),
                             ),
                           ),
-                        ),
-                      );
-                    }
-                    List<ItemsRow> listViewItemsRowList = snapshot.data!;
+                        );
+                      }
+                      List<ItemsRow> listViewItemsRowList = snapshot.data!;
 
-                    return ListView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemCount: listViewItemsRowList.length,
-                      itemBuilder: (context, listViewIndex) {
-                        final listViewItemsRow =
-                            listViewItemsRowList[listViewIndex];
-                        return Material(
-                          color: Colors.transparent,
-                          child: Theme(
-                            data: ThemeData(
-                              checkboxTheme: const CheckboxThemeData(
-                                visualDensity: VisualDensity.compact,
-                                materialTapTargetSize:
-                                    MaterialTapTargetSize.shrinkWrap,
+                      return ListView.separated(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: listViewItemsRowList.length,
+                        separatorBuilder: (_, __) => const SizedBox(height: 8.0),
+                        itemBuilder: (context, listViewIndex) {
+                          final listViewItemsRow =
+                              listViewItemsRowList[listViewIndex];
+                          return Opacity(
+                            opacity: listViewItemsRow.needed ? 1.0 : 0.4,
+                            child: Material(
+                              color: Colors.transparent,
+                              child: Theme(
+                                data: ThemeData(
+                                  checkboxTheme: const CheckboxThemeData(
+                                    visualDensity: VisualDensity.compact,
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                  ),
+                                  unselectedWidgetColor:
+                                      FlutterFlowTheme.of(context).alternate,
+                                ),
+                                child: CheckboxListTile(
+                                  value: _model.checkboxListTileValueMap[
+                                          listViewItemsRow] ??=
+                                      !listViewItemsRow.needed,
+                                  onChanged: (newValue) async {
+                                    safeSetState(() =>
+                                        _model.checkboxListTileValueMap[
+                                            listViewItemsRow] = newValue!);
+                                    if (newValue!) {
+                                      // Mark Item As Needed
+                                      await ItemsTable().update(
+                                        data: {
+                                          'needed': false,
+                                        },
+                                        matchingRows: (rows) => rows.eqOrNull(
+                                          'id',
+                                          listViewItemsRow.id,
+                                        ),
+                                      );
+                                      await Future.delayed(
+                                          const Duration(milliseconds: 500));
+                                    } else {
+                                      // Mark Item As Aquired
+                                      await ItemsTable().update(
+                                        data: {
+                                          'needed': true,
+                                          'last_needed_at':
+                                              supaSerialize<DateTime>(
+                                                  getCurrentTimestamp),
+                                        },
+                                        matchingRows: (rows) => rows.eqOrNull(
+                                          'id',
+                                          listViewItemsRow.id,
+                                        ),
+                                      );
+                                      await Future.delayed(
+                                          const Duration(milliseconds: 500));
+                                    }
+                                  },
+                                  title: Text(
+                                    listViewItemsRow.name,
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleLarge
+                                        .override(
+                                          fontFamily: 'Inter Tight',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  subtitle: Text(
+                                    listViewItemsRow.notes!,
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  tileColor: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  activeColor:
+                                      FlutterFlowTheme.of(context).primary,
+                                  checkColor: FlutterFlowTheme.of(context).info,
+                                  dense: false,
+                                  controlAffinity:
+                                      ListTileControlAffinity.trailing,
+                                  contentPadding:
+                                      const EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 12.0, 0.0),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
                               ),
-                              unselectedWidgetColor:
-                                  FlutterFlowTheme.of(context).alternate,
-                            ),
-                            child: CheckboxListTile(
-                              value: _model.checkboxListTileValueMap[
-                                      listViewItemsRow] ??=
-                                  !listViewItemsRow.needed,
-                              onChanged: (newValue) async {
-                                safeSetState(() =>
-                                    _model.checkboxListTileValueMap[
-                                        listViewItemsRow] = newValue!);
-                                if (newValue!) {
-                                  // Mark Item As Needed
-                                  await ItemsTable().update(
-                                    data: {
-                                      'needed': false,
-                                    },
-                                    matchingRows: (rows) => rows.eqOrNull(
-                                      'id',
-                                      listViewItemsRow.id,
-                                    ),
-                                  );
-                                } else {
-                                  // Mark Item As Aquired
-                                  await ItemsTable().update(
-                                    data: {
-                                      'needed': true,
-                                    },
-                                    matchingRows: (rows) => rows.eqOrNull(
-                                      'id',
-                                      listViewItemsRow.id,
-                                    ),
-                                  );
-                                }
-                              },
-                              title: Text(
-                                listViewItemsRow.name,
-                                style: FlutterFlowTheme.of(context)
-                                    .titleLarge
-                                    .override(
-                                      fontFamily: 'Inter Tight',
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                              subtitle: Text(
-                                listViewItemsRow.notes!,
-                                style: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Inter',
-                                      letterSpacing: 0.0,
-                                    ),
-                              ),
-                              tileColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              activeColor: FlutterFlowTheme.of(context).primary,
-                              checkColor: FlutterFlowTheme.of(context).info,
-                              dense: false,
-                              controlAffinity: ListTileControlAffinity.trailing,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 0.0, 12.0, 0.0),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                            ),
-                          ),
-                        )
-                            .animateOnPageLoad(animationsMap[
-                                'checkboxListTileOnPageLoadAnimation']!)
-                            .animateOnActionTrigger(
-                              animationsMap[
-                                  'checkboxListTileOnActionTriggerAnimation']!,
-                            );
-                      },
-                    ).animateOnActionTrigger(
-                      animationsMap['listViewOnActionTriggerAnimation']!,
-                    );
-                  },
+                            )
+                                .animateOnPageLoad(animationsMap[
+                                    'checkboxListTileOnPageLoadAnimation']!)
+                                .animateOnActionTrigger(
+                                  animationsMap[
+                                      'checkboxListTileOnActionTriggerAnimation']!,
+                                ),
+                          );
+                        },
+                      ).animateOnActionTrigger(
+                        animationsMap['listViewOnActionTriggerAnimation']!,
+                      );
+                    },
+                  ),
                 ),
               ),
               Padding(

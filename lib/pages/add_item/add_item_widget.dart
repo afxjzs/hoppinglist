@@ -72,7 +72,16 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                 ),
           ),
           actions: const [],
-          centerTitle: false,
+          flexibleSpace: FlexibleSpaceBar(
+            background: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.asset(
+                'assets/images/navbar_bg.png',
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(
