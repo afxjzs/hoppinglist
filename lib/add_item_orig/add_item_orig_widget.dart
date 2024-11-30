@@ -118,13 +118,13 @@ class _AddItemOrigWidgetState extends State<AddItemOrigWidget> {
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Inter Tight',
                                       letterSpacing: 0.0,
                                     ),
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Inter Tight',
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
@@ -163,7 +163,7 @@ class _AddItemOrigWidgetState extends State<AddItemOrigWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Inter Tight',
                                     letterSpacing: 0.0,
                                   ),
                               minLines: 1,
@@ -180,13 +180,13 @@ class _AddItemOrigWidgetState extends State<AddItemOrigWidget> {
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Inter Tight',
                                       letterSpacing: 0.0,
                                     ),
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Inter Tight',
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
@@ -225,7 +225,7 @@ class _AddItemOrigWidgetState extends State<AddItemOrigWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Inter Tight',
                                     letterSpacing: 0.0,
                                   ),
                               maxLines: 5,
@@ -311,7 +311,7 @@ class _AddItemOrigWidgetState extends State<AddItemOrigWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Inter Tight',
                                                 color: const Color(0xFF1565C0),
                                                 letterSpacing: 0.0,
                                               ),
@@ -345,7 +345,7 @@ class _AddItemOrigWidgetState extends State<AddItemOrigWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Inter Tight',
                                                 color: const Color(0xFF1565C0),
                                                 letterSpacing: 0.0,
                                               ),
@@ -375,7 +375,7 @@ class _AddItemOrigWidgetState extends State<AddItemOrigWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
-                                                fontFamily: 'Inter',
+                                                fontFamily: 'Inter Tight',
                                                 color: const Color(0xFF1565C0),
                                                 letterSpacing: 0.0,
                                               ),

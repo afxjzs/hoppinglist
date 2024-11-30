@@ -50,7 +50,7 @@ class _WrapLocationsWidgetState extends State<WrapLocationsWidget> {
           child: Text(
             '',
             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                  fontFamily: 'Inter',
+                  fontFamily: 'Inter Tight',
                   letterSpacing: 0.0,
                 ),
           ),

@@ -129,13 +129,13 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Inter Tight',
                                       letterSpacing: 0.0,
                                     ),
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Inter Tight',
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
@@ -174,7 +174,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Inter Tight',
                                     letterSpacing: 0.0,
                                   ),
                               minLines: 1,
@@ -191,13 +191,13 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Inter Tight',
                                       letterSpacing: 0.0,
                                     ),
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter',
+                                      fontFamily: 'Inter Tight',
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
@@ -236,7 +236,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'Inter Tight',
                                     letterSpacing: 0.0,
                                   ),
                               maxLines: 5,
@@ -346,7 +346,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter',
+                                        fontFamily: 'Inter Tight',
                                         letterSpacing: 0.0,
                                       ),
                                   checkboxBorderRadius:

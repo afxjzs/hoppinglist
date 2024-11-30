@@ -244,44 +244,44 @@ class ThemeTypography extends Typography {
         fontWeight: FontWeight.w600,
         fontSize: 16.0,
       );
-  String get labelLargeFamily => 'Inter';
+  String get labelLargeFamily => 'Inter Tight';
   TextStyle get labelLarge => GoogleFonts.getFont(
-        'Inter',
+        'Inter Tight',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get labelMediumFamily => 'Inter';
+  String get labelMediumFamily => 'Inter Tight';
   TextStyle get labelMedium => GoogleFonts.getFont(
-        'Inter',
+        'Inter Tight',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get labelSmallFamily => 'Inter';
+  String get labelSmallFamily => 'Inter Tight';
   TextStyle get labelSmall => GoogleFonts.getFont(
-        'Inter',
+        'Inter Tight',
         color: theme.secondaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
       );
-  String get bodyLargeFamily => 'Inter';
+  String get bodyLargeFamily => 'Inter Tight';
   TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Inter',
+        'Inter Tight',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Inter';
+  String get bodyMediumFamily => 'Inter Tight';
   TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Inter',
+        'Inter Tight',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Inter';
+  String get bodySmallFamily => 'Inter Tight';
   TextStyle get bodySmall => GoogleFonts.getFont(
-        'Inter',
+        'Inter Tight',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
