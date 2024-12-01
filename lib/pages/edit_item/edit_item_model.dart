@@ -1,8 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'add_item_orig_widget.dart' show AddItemOrigWidget;
+import '/flutter_flow/form_field_controller.dart';
+import 'edit_item_widget.dart' show EditItemWidget;
 import 'package:flutter/material.dart';
 
-class AddItemOrigModel extends FlutterFlowModel<AddItemOrigWidget> {
+class EditItemModel extends FlutterFlowModel<EditItemWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for TextField widget.
@@ -13,6 +14,11 @@ class AddItemOrigModel extends FlutterFlowModel<AddItemOrigWidget> {
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for CheckboxGroup widget.
+  FormFieldController<List<String>>? checkboxGroupValueController;
+  List<String>? get checkboxGroupValues => checkboxGroupValueController?.value;
+  set checkboxGroupValues(List<String>? v) =>
+      checkboxGroupValueController?.value = v;
 
   @override
   void initState(BuildContext context) {}

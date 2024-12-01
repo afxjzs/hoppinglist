@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'add_item_model.dart';
 export 'add_item_model.dart';
 
@@ -46,7 +47,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
@@ -59,22 +60,21 @@ class _AddItemWidgetState extends State<AddItemWidget> {
               size: 24.0,
             ),
             onPressed: () async {
-              context.safePop();
+              context.pushNamed('HomePage');
             },
           ),
           title: Text(
             'Add Item',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Inter Tight',
-                  color: FlutterFlowTheme.of(context).info,
-                  fontSize: 22.0,
+                  fontFamily: 'Plus Jakarta Sans',
+                  color: FlutterFlowTheme.of(context).alwaysLight,
                   letterSpacing: 0.0,
                 ),
           ),
           actions: const [],
           flexibleSpace: FlexibleSpaceBar(
             background: ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.circular(0.0),
               child: Image.asset(
                 'assets/images/navbar_bg.png',
                 fit: BoxFit.cover,
@@ -87,21 +87,21 @@ class _AddItemWidgetState extends State<AddItemWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+            padding: const EdgeInsets.all(12.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Material(
                     color: Colors.transparent,
-                    elevation: 2.0,
+                    elevation: 1.0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: FlutterFlowTheme.of(context).primaryBackground,
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
@@ -115,7 +115,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .headlineSmall
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Plus Jakarta Sans',
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -129,13 +129,13 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter Tight',
+                                      fontFamily: 'Space Grotesk',
                                       letterSpacing: 0.0,
                                     ),
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter Tight',
+                                      fontFamily: 'Space Grotesk',
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
@@ -174,7 +174,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Space Grotesk',
                                     letterSpacing: 0.0,
                                   ),
                               minLines: 1,
@@ -191,13 +191,13 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                                 labelStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter Tight',
+                                      fontFamily: 'Space Grotesk',
                                       letterSpacing: 0.0,
                                     ),
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Inter Tight',
+                                      fontFamily: 'Space Grotesk',
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
@@ -236,7 +236,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
-                                    fontFamily: 'Inter Tight',
+                                    fontFamily: 'Space Grotesk',
                                     letterSpacing: 0.0,
                                   ),
                               maxLines: 5,
@@ -251,14 +251,14 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                   ),
                   Material(
                     color: Colors.transparent,
-                    elevation: 2.0,
+                    elevation: 1.0,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        color: FlutterFlowTheme.of(context).primaryBackground,
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
@@ -276,7 +276,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                                   style: FlutterFlowTheme.of(context)
                                       .headlineSmall
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        fontFamily: 'Plus Jakarta Sans',
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -310,11 +310,10 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                                     child: SizedBox(
                                       width: 50.0,
                                       height: 50.0,
-                                      child: CircularProgressIndicator(
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
-                                        ),
+                                      child: SpinKitRing(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 50.0,
                                       ),
                                     ),
                                   );
@@ -346,7 +345,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                                   textStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
-                                        fontFamily: 'Inter Tight',
+                                        fontFamily: 'Space Grotesk',
                                         letterSpacing: 0.0,
                                       ),
                                   checkboxBorderRadius:
@@ -376,7 +375,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .headlineMedium
                                 .override(
-                                  fontFamily: 'Inter Tight',
+                                  fontFamily: 'Plus Jakarta Sans',
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
                                   letterSpacing: 0.0,
@@ -403,11 +402,11 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle:
                           FlutterFlowTheme.of(context).titleMedium.override(
-                                fontFamily: 'Inter Tight',
+                                fontFamily: 'Space Grotesk',
                                 color: FlutterFlowTheme.of(context).info,
                                 letterSpacing: 0.0,
                               ),
-                      elevation: 0.0,
+                      elevation: 2.0,
                       borderRadius: BorderRadius.circular(25.0),
                     ),
                   ),

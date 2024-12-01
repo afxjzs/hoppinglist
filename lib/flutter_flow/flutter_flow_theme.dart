@@ -54,6 +54,9 @@ abstract class FlutterFlowTheme {
   late Color error;
   late Color info;
 
+  late Color alwaysLight;
+  late Color alwaysDark;
+
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
   @Deprecated('Use displaySmall instead')
@@ -125,22 +128,25 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF4B39EF);
-  late Color secondary = const Color(0xFF39D2C0);
-  late Color tertiary = const Color(0xFFEE8B60);
-  late Color alternate = const Color(0xFFE0E3E7);
+  late Color primary = const Color(0xFFCE035F);
+  late Color secondary = const Color(0xFFD43EED);
+  late Color tertiary = const Color(0xFF02FFF4);
+  late Color alternate = const Color(0xFFDBE2E7);
   late Color primaryText = const Color(0xFF14181B);
   late Color secondaryText = const Color(0xFF57636C);
   late Color primaryBackground = const Color(0xFFF1F4F8);
-  late Color secondaryBackground = const Color(0xFFFFFFFF);
-  late Color accent1 = const Color(0x4C4B39EF);
-  late Color accent2 = const Color(0x4D39D2C0);
-  late Color accent3 = const Color(0x4DEE8B60);
-  late Color accent4 = const Color(0xCCFFFFFF);
-  late Color success = const Color(0xFF249689);
-  late Color warning = const Color(0xFFF9CF58);
-  late Color error = const Color(0xFFFF5963);
-  late Color info = const Color(0xFFFFFFFF);
+  late Color secondaryBackground = const Color(0xFFE9E6E9);
+  late Color accent1 = const Color(0x4CCE035F);
+  late Color accent2 = const Color(0x4DD43EED);
+  late Color accent3 = const Color(0x4C02FFF4);
+  late Color accent4 = const Color(0xB3FFFFFF);
+  late Color success = const Color(0xFF39D2C0);
+  late Color warning = const Color(0xFFC96F46);
+  late Color error = const Color(0xFFE65454);
+  late Color info = const Color(0xFFCACCD5);
+
+  late Color alwaysLight = const Color(0xFFFFFFFF);
+  late Color alwaysDark = const Color(0x004B39EF);
 }
 
 abstract class Typography {
@@ -181,107 +187,106 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Inter Tight';
+  String get displayLargeFamily => 'Plus Jakarta Sans';
   TextStyle get displayLarge => GoogleFonts.getFont(
-        'Inter Tight',
+        'Plus Jakarta Sans',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 64.0,
+        fontWeight: FontWeight.normal,
+        fontSize: 57.0,
       );
-  String get displayMediumFamily => 'Inter Tight';
+  String get displayMediumFamily => 'Plus Jakarta Sans';
   TextStyle get displayMedium => GoogleFonts.getFont(
-        'Inter Tight',
+        'Plus Jakarta Sans',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 44.0,
+        fontWeight: FontWeight.normal,
+        fontSize: 45.0,
       );
-  String get displaySmallFamily => 'Inter Tight';
+  String get displaySmallFamily => 'Plus Jakarta Sans';
   TextStyle get displaySmall => GoogleFonts.getFont(
-        'Inter Tight',
+        'Plus Jakarta Sans',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 36.0,
+        fontWeight: FontWeight.w500,
+        fontSize: 34.0,
       );
-  String get headlineLargeFamily => 'Inter Tight';
+  String get headlineLargeFamily => 'Plus Jakarta Sans';
   TextStyle get headlineLarge => GoogleFonts.getFont(
-        'Inter Tight',
+        'Plus Jakarta Sans',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.normal,
         fontSize: 32.0,
       );
-  String get headlineMediumFamily => 'Inter Tight';
+  String get headlineMediumFamily => 'Plus Jakarta Sans';
   TextStyle get headlineMedium => GoogleFonts.getFont(
-        'Inter Tight',
+        'Plus Jakarta Sans',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.normal,
         fontSize: 28.0,
       );
-  String get headlineSmallFamily => 'Inter Tight';
+  String get headlineSmallFamily => 'Plus Jakarta Sans';
   TextStyle get headlineSmall => GoogleFonts.getFont(
-        'Inter Tight',
+        'Plus Jakarta Sans',
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 24.0,
-      );
-  String get titleLargeFamily => 'Inter Tight';
-  TextStyle get titleLarge => GoogleFonts.getFont(
-        'Inter Tight',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w500,
         fontSize: 20.0,
       );
-  String get titleMediumFamily => 'Inter Tight';
+  String get titleLargeFamily => 'Plus Jakarta Sans';
+  TextStyle get titleLarge => GoogleFonts.getFont(
+        'Plus Jakarta Sans',
+        color: theme.primaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 22.0,
+      );
+  String get titleMediumFamily => 'Space Grotesk';
   TextStyle get titleMedium => GoogleFonts.getFont(
-        'Inter Tight',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 18.0,
+        'Space Grotesk',
+        color: theme.info,
+        fontWeight: FontWeight.w500,
+        fontSize: 16.0,
       );
-  String get titleSmallFamily => 'Inter Tight';
+  String get titleSmallFamily => 'Space Grotesk';
   TextStyle get titleSmall => GoogleFonts.getFont(
-        'Inter Tight',
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 16.0,
-      );
-  String get labelLargeFamily => 'Inter Tight';
-  TextStyle get labelLarge => GoogleFonts.getFont(
-        'Inter Tight',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 16.0,
-      );
-  String get labelMediumFamily => 'Inter Tight';
-  TextStyle get labelMedium => GoogleFonts.getFont(
-        'Inter Tight',
-        color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
+        'Space Grotesk',
+        color: theme.info,
+        fontWeight: FontWeight.w500,
         fontSize: 14.0,
       );
-  String get labelSmallFamily => 'Inter Tight';
-  TextStyle get labelSmall => GoogleFonts.getFont(
-        'Inter Tight',
+  String get labelLargeFamily => 'Space Grotesk';
+  TextStyle get labelLarge => GoogleFonts.getFont(
+        'Space Grotesk',
         color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w500,
+        fontSize: 16.0,
+      );
+  String get labelMediumFamily => 'Space Grotesk';
+  TextStyle get labelMedium => GoogleFonts.getFont(
+        'Space Grotesk',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.w500,
+        fontSize: 14.0,
+      );
+  String get labelSmallFamily => 'Space Grotesk';
+  TextStyle get labelSmall => GoogleFonts.getFont(
+        'Space Grotesk',
+        color: theme.secondaryText,
+        fontWeight: FontWeight.w500,
         fontSize: 12.0,
       );
-  String get bodyLargeFamily => 'Inter Tight';
+  String get bodyLargeFamily => 'Space Grotesk';
   TextStyle get bodyLarge => GoogleFonts.getFont(
-        'Inter Tight',
+        'Space Grotesk',
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
         fontSize: 16.0,
       );
-  String get bodyMediumFamily => 'Inter Tight';
+  String get bodyMediumFamily => 'Space Grotesk';
   TextStyle get bodyMedium => GoogleFonts.getFont(
-        'Inter Tight',
+        'Space Grotesk',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
       );
-  String get bodySmallFamily => 'Inter Tight';
+  String get bodySmallFamily => 'Space Grotesk';
   TextStyle get bodySmall => GoogleFonts.getFont(
-        'Inter Tight',
+        'Space Grotesk',
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
@@ -296,22 +301,25 @@ class DarkModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF4B39EF);
-  late Color secondary = const Color(0xFF39D2C0);
-  late Color tertiary = const Color(0xFFEE8B60);
+  late Color primary = const Color(0xFFCE035F);
+  late Color secondary = const Color(0xFFD43EED);
+  late Color tertiary = const Color(0xFF02FFF4);
   late Color alternate = const Color(0xFF262D34);
   late Color primaryText = const Color(0xFFFFFFFF);
   late Color secondaryText = const Color(0xFF95A1AC);
-  late Color primaryBackground = const Color(0xFF1D2428);
+  late Color primaryBackground = const Color(0xFF1A1F24);
   late Color secondaryBackground = const Color(0xFF14181B);
-  late Color accent1 = const Color(0x4C4B39EF);
-  late Color accent2 = const Color(0x4D39D2C0);
-  late Color accent3 = const Color(0x4DEE8B60);
-  late Color accent4 = const Color(0xB2262D34);
-  late Color success = const Color(0xFF249689);
-  late Color warning = const Color(0xFFF9CF58);
-  late Color error = const Color(0xFFFF5963);
-  late Color info = const Color(0xFFFFFFFF);
+  late Color accent1 = const Color(0x4CCE035F);
+  late Color accent2 = const Color(0x4DD43EED);
+  late Color accent3 = const Color(0x4C02FFF4);
+  late Color accent4 = const Color(0xCD14181B);
+  late Color success = const Color(0xFF39D2C0);
+  late Color warning = const Color(0xFFC96F46);
+  late Color error = const Color(0xFFE65454);
+  late Color info = const Color(0xFFCACCD5);
+
+  late Color alwaysLight = const Color(0xFFFFFFFF);
+  late Color alwaysDark = const Color(0x004B39EF);
 }
 
 extension TextStyleHelper on TextStyle {

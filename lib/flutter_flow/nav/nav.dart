@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 
 import '/index.dart';
+import '/main.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 export 'package:go_router/go_router.dart';
@@ -40,7 +41,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : const HomePageWidget(),
+          : const NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -55,12 +56,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : const HomePageWidget(),
+              : const NavBarPage(),
         ),
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
-          builder: (context, params) => const HomePageWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'HomePage')
+              : const NavBarPage(
+                  initialPage: 'HomePage',
+                  page: HomePageWidget(),
+                ),
         ),
         FFRoute(
           name: 'AltHome',
@@ -68,14 +74,36 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const AltHomeWidget(),
         ),
         FFRoute(
-          name: 'AddItemOrig',
-          path: '/addItemOrig',
-          builder: (context, params) => const AddItemOrigWidget(),
-        ),
-        FFRoute(
           name: 'AddItem',
           path: '/addItem',
-          builder: (context, params) => const AddItemWidget(),
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'AddItem')
+              : const NavBarPage(
+                  initialPage: 'AddItem',
+                  page: AddItemWidget(),
+                ),
+        ),
+        FFRoute(
+          name: 'EditItem',
+          path: '/editItem',
+          builder: (context, params) => EditItemWidget(
+            itemId: params.getParam(
+              'itemId',
+              ParamType.int,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ListItems',
+          path: '/listItems',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'ListItems')
+              : const ListItemsWidget(),
+        ),
+        FFRoute(
+          name: 'ListItemsAll',
+          path: '/listItemsAll',
+          builder: (context, params) => const ListItemsAllWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
