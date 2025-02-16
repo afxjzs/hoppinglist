@@ -47,7 +47,7 @@ class _DynamicLocationChipsWidgetState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: EdgeInsets.all(4.0),
       child: FutureBuilder<List<UniqueLocationsViewRow>>(
         future: UniqueLocationsViewTable().queryRows(
           queryFn: (q) => q,

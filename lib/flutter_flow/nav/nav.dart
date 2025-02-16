@@ -13,6 +13,8 @@ export 'serialization_util.dart';
 
 const kTransitionInfoKey = '__transition_info__';
 
+GlobalKey<NavigatorState> appNavigatorKey = GlobalKey<NavigatorState>();
+
 class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
 
@@ -31,6 +33,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
+      navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) => appStateNotifier.showSplashImage
           ? Builder(
               builder: (context) => Container(
@@ -41,7 +44,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : const NavBarPage(),
+          : NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -56,14 +59,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : const NavBarPage(),
+              : NavBarPage(),
         ),
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'HomePage')
-              : const NavBarPage(
+              ? NavBarPage(initialPage: 'HomePage')
+              : NavBarPage(
                   initialPage: 'HomePage',
                   page: HomePageWidget(),
                 ),
@@ -71,14 +74,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'AltHome',
           path: '/altHome',
-          builder: (context, params) => const AltHomeWidget(),
+          builder: (context, params) => AltHomeWidget(),
         ),
         FFRoute(
           name: 'AddItem',
           path: '/addItem',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'AddItem')
-              : const NavBarPage(
+              ? NavBarPage(initialPage: 'AddItem')
+              : NavBarPage(
                   initialPage: 'AddItem',
                   page: AddItemWidget(),
                 ),
@@ -97,13 +100,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'ListItems',
           path: '/listItems',
           builder: (context, params) => params.isEmpty
-              ? const NavBarPage(initialPage: 'ListItems')
-              : const ListItemsWidget(),
+              ? NavBarPage(initialPage: 'ListItems')
+              : ListItemsWidget(),
         ),
         FFRoute(
           name: 'ListItemsAll',
           path: '/listItemsAll',
-          builder: (context, params) => const ListItemsAllWidget(),
+          builder: (context, params) => ListItemsAllWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -267,7 +270,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

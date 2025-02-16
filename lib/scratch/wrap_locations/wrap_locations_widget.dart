@@ -46,7 +46,7 @@ class _WrapLocationsWidgetState extends State<WrapLocationsWidget> {
       clipBehavior: Clip.none,
       children: [
         Align(
-          alignment: const AlignmentDirectional(1.0, 0.0),
+          alignment: AlignmentDirectional(1.0, 0.0),
           child: Text(
             '',
             style: FlutterFlowTheme.of(context).bodyMedium.override(

@@ -1,4 +1,5 @@
 import '/backend/supabase/supabase.dart';
+import '/components/edit_checklist_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
@@ -9,8 +10,8 @@ import 'package:provider/provider.dart';
 import 'list_items_model.dart';
 export 'list_items_model.dart';
 
+/// List of the items
 class ListItemsWidget extends StatefulWidget {
-  /// List of the items
   const ListItemsWidget({super.key});
 
   @override
@@ -40,7 +41,10 @@ class _ListItemsWidgetState extends State<ListItemsWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
@@ -110,16 +114,21 @@ class _ListItemsWidgetState extends State<ListItemsWidget> {
               children: [
                 Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Padding(
-                    padding: const EdgeInsets.all(12.0),
+                    padding: EdgeInsets.all(12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        FutureBuilder<List<ItemsRow>>(
-                          future: ItemsTable().queryRows(
-                            queryFn: (q) => q.order('name', ascending: true),
-                          ),
+                        StreamBuilder<List<ItemsRow>>(
+                          stream: _model.containerSupabaseStream ??= SupaFlow
+                              .client
+                              .from("items")
+                              .stream(primaryKey: ['id'])
+                              .order('last_needed_at')
+                              .order('name', ascending: true)
+                              .map((list) =>
+                                  list.map((item) => ItemsRow(item)).toList()),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -134,161 +143,30 @@ class _ListItemsWidgetState extends State<ListItemsWidget> {
                                 ),
                               );
                             }
-                            List<ItemsRow> listViewItemsRowList =
+                            List<ItemsRow> editChecklistItemsRowList =
                                 snapshot.data!;
 
-                            return ListView.separated(
-                              padding: EdgeInsets.zero,
-                              primary: false,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: listViewItemsRowList.length,
-                              separatorBuilder: (_, __) =>
-                                  const SizedBox(height: 12.0),
-                              itemBuilder: (context, listViewIndex) {
-                                final listViewItemsRow =
-                                    listViewItemsRowList[listViewIndex];
-                                return InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed(
-                                      'EditItem',
-                                      queryParameters: {
-                                        'itemId': serializeParam(
-                                          listViewItemsRow.id,
-                                          ParamType.int,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  },
-                                  child: Material(
-                                    color: Colors.transparent,
-                                    elevation: 1.0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12.0),
-                                    ),
-                                    child: Container(
-                                      width: MediaQuery.sizeOf(context).width *
-                                          1.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 16.0, 16.0, 16.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.min,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    listViewItemsRow.name,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .titleLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Plus Jakarta Sans',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                  Text(
-                                                    valueOrDefault<String>(
-                                                      listViewItemsRow.notes,
-                                                      '...',
-                                                    ),
-                                                    textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Space Grotesk',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                  Text(
-                                                    listViewItemsRow.locations
-                                                        .take(5)
-                                                        .toList()
-                                                        .first,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily:
-                                                              'Space Grotesk',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                FlutterFlowIconButton(
-                                                  borderRadius: 20.0,
-                                                  buttonSize: 40.0,
-                                                  fillColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .accent4,
-                                                  icon: Icon(
-                                                    Icons.edit,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    size: 20.0,
-                                                  ),
-                                                  onPressed: () async {
-                                                    context.pushNamed(
-                                                      'EditItem',
-                                                      queryParameters: {
-                                                        'itemId':
-                                                            serializeParam(
-                                                          listViewItemsRow.id,
-                                                          ParamType.int,
-                                                        ),
-                                                      }.withoutNulls,
-                                                    );
-                                                  },
-                                                ),
-                                              ].divide(const SizedBox(width: 12.0)),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
+                            return wrapWithModel(
+                              model: _model.editChecklistModel,
+                              updateCallback: () => safeSetState(() {}),
+                              child: EditChecklistWidget(
+                                parameter1:
+                                    editChecklistItemsRowList.firstOrNull?.name,
+                                parameter2: editChecklistItemsRowList
+                                    .firstOrNull?.notes,
+                                parameter3: editChecklistItemsRowList
+                                    .firstOrNull?.locations.firstOrNull,
+                                parameter4:
+                                    editChecklistItemsRowList.firstOrNull?.id,
+                              ),
                             );
                           },
                         ),
-                      ].divide(const SizedBox(height: 16.0)),
+                      ].divide(SizedBox(height: 16.0)),
                     ),
                   ),
                 ),
-              ].divide(const SizedBox(height: 16.0)),
+              ].divide(SizedBox(height: 16.0)),
             ),
           ),
         ),

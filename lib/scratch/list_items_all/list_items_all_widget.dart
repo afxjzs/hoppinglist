@@ -7,8 +7,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'list_items_all_model.dart';
 export 'list_items_all_model.dart';
 
+/// List of the items
 class ListItemsAllWidget extends StatefulWidget {
-  /// List of the items
   const ListItemsAllWidget({super.key});
 
   @override
@@ -39,7 +39,10 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -101,7 +104,7 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                   child: Container(
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     decoration: BoxDecoration(
@@ -127,21 +130,21 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         errorBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                         focusedErrorBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Color(0x00000000),
                             width: 1.0,
                           ),
@@ -150,7 +153,7 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
                         filled: true,
                         fillColor:
                             FlutterFlowTheme.of(context).primaryBackground,
-                        suffixIcon: const Icon(
+                        suffixIcon: Icon(
                           Icons.search,
                         ),
                       ),
@@ -171,7 +174,7 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -203,7 +206,7 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
                               scrollDirection: Axis.vertical,
                               itemCount: listViewItemsRowList.length,
                               separatorBuilder: (_, __) =>
-                                  const SizedBox(height: 12.0),
+                                  SizedBox(height: 12.0),
                               itemBuilder: (context, listViewIndex) {
                                 final listViewItemsRow =
                                     listViewItemsRowList[listViewIndex];
@@ -222,7 +225,7 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 16.0, 16.0, 16.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -252,7 +255,7 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
                                                   listViewItemsRow.locations
                                                       .take(5)
                                                       .toList()
-                                                      .first,
+                                                      .firstOrNull!,
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodySmall
@@ -293,7 +296,7 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
                                               FlutterFlowIconButton(
                                                 borderRadius: 20.0,
                                                 buttonSize: 40.0,
-                                                fillColor: const Color(0xFFE3F2FD),
+                                                fillColor: Color(0xFFE3F2FD),
                                                 icon: Icon(
                                                   Icons.edit,
                                                   color: FlutterFlowTheme.of(
@@ -316,7 +319,7 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
                                               FlutterFlowIconButton(
                                                 borderRadius: 20.0,
                                                 buttonSize: 40.0,
-                                                fillColor: const Color(0xFFFFEBEE),
+                                                fillColor: Color(0xFFFFEBEE),
                                                 icon: Icon(
                                                   Icons.delete_outline,
                                                   color: FlutterFlowTheme.of(
@@ -329,7 +332,7 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
                                                       'IconButton pressed ...');
                                                 },
                                               ),
-                                            ].divide(const SizedBox(width: 12.0)),
+                                            ].divide(SizedBox(width: 12.0)),
                                           ),
                                         ],
                                       ),
@@ -340,11 +343,11 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
                             );
                           },
                         ),
-                      ].divide(const SizedBox(height: 16.0)),
+                      ].divide(SizedBox(height: 16.0)),
                     ),
                   ),
                 ),
-              ].divide(const SizedBox(height: 16.0)),
+              ].divide(SizedBox(height: 16.0)),
             ),
           ),
         ),

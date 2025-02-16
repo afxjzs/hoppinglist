@@ -129,7 +129,7 @@ class LightModeTheme extends FlutterFlowTheme {
   Color get tertiaryColor => tertiary;
 
   late Color primary = const Color(0xFFCE035F);
-  late Color secondary = const Color(0xFFD43EED);
+  late Color secondary = const Color(0xFF433371);
   late Color tertiary = const Color(0xFF02FFF4);
   late Color alternate = const Color(0xFFDBE2E7);
   late Color primaryText = const Color(0xFF14181B);
@@ -145,8 +145,8 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFE65454);
   late Color info = const Color(0xFFCACCD5);
 
-  late Color alwaysLight = const Color(0xFFFFFFFF);
-  late Color alwaysDark = const Color(0x004B39EF);
+  late Color alwaysLight = Color(0xFFFFFFFF);
+  late Color alwaysDark = Color(0x004B39EF);
 }
 
 abstract class Typography {
@@ -302,7 +302,7 @@ class DarkModeTheme extends FlutterFlowTheme {
   Color get tertiaryColor => tertiary;
 
   late Color primary = const Color(0xFFCE035F);
-  late Color secondary = const Color(0xFFD43EED);
+  late Color secondary = const Color(0xFF433371);
   late Color tertiary = const Color(0xFF02FFF4);
   late Color alternate = const Color(0xFF262D34);
   late Color primaryText = const Color(0xFFFFFFFF);
@@ -318,8 +318,8 @@ class DarkModeTheme extends FlutterFlowTheme {
   late Color error = const Color(0xFFE65454);
   late Color info = const Color(0xFFCACCD5);
 
-  late Color alwaysLight = const Color(0xFFFFFFFF);
-  late Color alwaysDark = const Color(0x004B39EF);
+  late Color alwaysLight = Color(0xFFFFFFFF);
+  late Color alwaysDark = Color(0x004B39EF);
 }
 
 extension TextStyleHelper on TextStyle {

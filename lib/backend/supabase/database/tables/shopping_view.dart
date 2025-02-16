@@ -9,7 +9,7 @@ class ShoppingViewTable extends SupabaseTable<ShoppingViewRow> {
 }
 
 class ShoppingViewRow extends SupabaseDataRow {
-  ShoppingViewRow(super.data);
+  ShoppingViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ShoppingViewTable();

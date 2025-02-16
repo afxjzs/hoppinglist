@@ -10,7 +10,7 @@ class UniqueLocationsViewTable extends SupabaseTable<UniqueLocationsViewRow> {
 }
 
 class UniqueLocationsViewRow extends SupabaseDataRow {
-  UniqueLocationsViewRow(super.data);
+  UniqueLocationsViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => UniqueLocationsViewTable();

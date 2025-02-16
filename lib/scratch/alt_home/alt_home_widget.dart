@@ -35,7 +35,10 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
+      onTap: () {
+        FocusScope.of(context).unfocus();
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -47,7 +50,7 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 40.0,
@@ -124,20 +127,20 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemCount: listViewItemsRowList.length,
-                      separatorBuilder: (_, __) => const SizedBox(height: 8.0),
+                      separatorBuilder: (_, __) => SizedBox(height: 8.0),
                       itemBuilder: (context, listViewIndex) {
                         final listViewItemsRow =
                             listViewItemsRowList[listViewIndex];
                         return Opacity(
                           opacity: listViewItemsRow.needed ? 1.0 : 0.4,
                           child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 310),
+                            duration: Duration(milliseconds: 310),
                             curve: Curves.easeInOut,
                             width: 100.0,
                             height: 100.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: EdgeInsets.all(8.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -150,7 +153,7 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
                                         Expanded(
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Text(
                                               valueOrDefault<String>(
                                                 listViewItemsRow.name,
@@ -169,7 +172,7 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
                                               listViewItemsRow.notes,
@@ -185,9 +188,10 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
+                                              AlignmentDirectional(1.0, 0.0),
                                           child: Text(
-                                            listViewItemsRow.locations.first,
+                                            listViewItemsRow
+                                                .locations.firstOrNull!,
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -200,10 +204,10 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(8.0),
                                     child: Theme(
                                       data: ThemeData(
-                                        checkboxTheme: const CheckboxThemeData(
+                                        checkboxTheme: CheckboxThemeData(
                                           visualDensity: VisualDensity.standard,
                                           materialTapTargetSize:
                                               MaterialTapTargetSize.padded,
