@@ -6,3 +6,4 @@ export '/pages/edit_item/edit_item_widget.dart' show EditItemWidget;
 export '/pages/list_items/list_items_widget.dart' show ListItemsWidget;
 export '/scratch/list_items_all/list_items_all_widget.dart'
     show ListItemsAllWidget;
+export '/pages/select_group/select_group_widget.dart' show SelectGroupWidget;

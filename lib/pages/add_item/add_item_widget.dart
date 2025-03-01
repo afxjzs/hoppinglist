@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'add_item_model.dart';
@@ -12,6 +13,9 @@ export 'add_item_model.dart';
 
 class AddItemWidget extends StatefulWidget {
   const AddItemWidget({super.key});
+
+  static String routeName = 'AddItem';
+  static String routePath = '/addItem';
 
   @override
   State<AddItemWidget> createState() => _AddItemWidgetState();
@@ -63,7 +67,7 @@ class _AddItemWidgetState extends State<AddItemWidget> {
               size: 24.0,
             ),
             onPressed: () async {
-              context.pushNamed('HomePage');
+              context.pushNamed(HomePageWidget.routeName);
             },
           ),
           title: Text(

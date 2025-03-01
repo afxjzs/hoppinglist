@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,9 @@ export 'list_items_model.dart';
 /// List of the items
 class ListItemsWidget extends StatefulWidget {
   const ListItemsWidget({super.key});
+
+  static String routeName = 'ListItems';
+  static String routePath = '/listItems';
 
   @override
   State<ListItemsWidget> createState() => _ListItemsWidgetState();
@@ -60,7 +64,7 @@ class _ListItemsWidgetState extends State<ListItemsWidget> {
               size: 24.0,
             ),
             onPressed: () async {
-              context.pushNamed('HomePage');
+              context.pushNamed(HomePageWidget.routeName);
             },
           ),
           title: Text(

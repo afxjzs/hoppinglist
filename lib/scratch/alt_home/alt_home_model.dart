@@ -1,5 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'alt_home_widget.dart' show AltHomeWidget;
 import 'package:flutter/material.dart';
 

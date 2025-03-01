@@ -2,6 +2,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'alt_home_model.dart';
@@ -9,6 +10,9 @@ export 'alt_home_model.dart';
 
 class AltHomeWidget extends StatefulWidget {
   const AltHomeWidget({super.key});
+
+  static String routeName = 'AltHome';
+  static String routePath = '/altHome';
 
   @override
   State<AltHomeWidget> createState() => _AltHomeWidgetState();
@@ -78,7 +82,7 @@ class _AltHomeWidgetState extends State<AltHomeWidget> {
                 size: 40.0,
               ),
               onPressed: () async {
-                context.pushNamed('AddItem');
+                context.pushNamed(AddItemWidget.routeName);
               },
             ),
           ],

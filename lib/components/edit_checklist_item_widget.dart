@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'edit_checklist_item_model.dart';
 export 'edit_checklist_item_model.dart';
@@ -56,7 +57,7 @@ class _EditChecklistItemWidgetState extends State<EditChecklistItemWidget> {
       highlightColor: Colors.transparent,
       onTap: () async {
         context.pushNamed(
-          'EditItem',
+          EditItemWidget.routeName,
           queryParameters: {
             'itemId': serializeParam(
               widget.parameter4,
@@ -129,7 +130,7 @@ class _EditChecklistItemWidgetState extends State<EditChecklistItemWidget> {
                       ),
                       onPressed: () async {
                         context.pushNamed(
-                          'EditItem',
+                          EditItemWidget.routeName,
                           queryParameters: {
                             'itemId': serializeParam(
                               widget.parameter4,

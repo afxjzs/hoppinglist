@@ -2,6 +2,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'list_items_all_model.dart';
@@ -10,6 +11,9 @@ export 'list_items_all_model.dart';
 /// List of the items
 class ListItemsAllWidget extends StatefulWidget {
   const ListItemsAllWidget({super.key});
+
+  static String routeName = 'ListItemsAll';
+  static String routePath = '/listItemsAll';
 
   @override
   State<ListItemsAllWidget> createState() => _ListItemsAllWidgetState();
@@ -58,7 +62,7 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
               size: 24.0,
             ),
             onPressed: () async {
-              context.pushNamed('HomePage');
+              context.pushNamed(HomePageWidget.routeName);
             },
           ),
           title: Text(
@@ -306,7 +310,7 @@ class _ListItemsAllWidgetState extends State<ListItemsAllWidget> {
                                                 ),
                                                 onPressed: () async {
                                                   context.pushNamed(
-                                                    'EditItem',
+                                                    EditItemWidget.routeName,
                                                     queryParameters: {
                                                       'itemId': serializeParam(
                                                         listViewItemsRow.id,

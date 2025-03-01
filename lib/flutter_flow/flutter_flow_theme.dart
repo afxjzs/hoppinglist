@@ -275,7 +275,7 @@ class ThemeTypography extends Typography {
   TextStyle get bodyLarge => GoogleFonts.getFont(
         'Space Grotesk',
         color: theme.primaryText,
-        fontSize: 16.0,
+        fontSize: 18.0,
       );
   String get bodyMediumFamily => 'Space Grotesk';
   TextStyle get bodyMedium => GoogleFonts.getFont(

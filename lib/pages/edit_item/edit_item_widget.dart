@@ -18,6 +18,9 @@ class EditItemWidget extends StatefulWidget {
 
   final int? itemId;
 
+  static String routeName = 'EditItem';
+  static String routePath = '/editItem';
+
   @override
   State<EditItemWidget> createState() => _EditItemWidgetState();
 }
