@@ -1,34 +1,34 @@
 import '/backend/supabase/supabase.dart';
-import '/components/edit_item_list/edit_item_list_widget.dart';
+import '/components/edit_location_list/edit_location_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'list_items_model.dart';
-export 'list_items_model.dart';
+import 'list_locations_model.dart';
+export 'list_locations_model.dart';
 
-/// List of the items
-class ListItemsWidget extends StatefulWidget {
-  const ListItemsWidget({super.key});
+/// List of the locations
+class ListLocationsWidget extends StatefulWidget {
+  const ListLocationsWidget({super.key});
 
-  static String routeName = 'ListItems';
-  static String routePath = '/listItems';
+  static String routeName = 'ListLocations';
+  static String routePath = '/listLocations';
 
   @override
-  State<ListItemsWidget> createState() => _ListItemsWidgetState();
+  State<ListLocationsWidget> createState() => _ListLocationsWidgetState();
 }
 
-class _ListItemsWidgetState extends State<ListItemsWidget> {
-  late ListItemsModel _model;
+class _ListLocationsWidgetState extends State<ListLocationsWidget> {
+  late ListLocationsModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ListItemsModel());
+    _model = createModel(context, () => ListLocationsModel());
   }
 
   @override
@@ -66,7 +66,7 @@ class _ListItemsWidgetState extends State<ListItemsWidget> {
             },
           ),
           title: Text(
-            'Edit Items',
+            'Edit Location',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Plus Jakarta Sans',
                   color: FlutterFlowTheme.of(context).alwaysLight,
@@ -122,17 +122,19 @@ class _ListItemsWidgetState extends State<ListItemsWidget> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        StreamBuilder<List<ItemsRow>>(
+                        StreamBuilder<List<LocationItemCountsRow>>(
                           stream: _model.containerSupabaseStream ??= SupaFlow
                               .client
-                              .from("items")
+                              .from("location_item_counts")
                               .stream(primaryKey: ['id'])
                               .eqOrNull(
                                 'group_id',
                                 FFAppState().groupid,
                               )
-                              .map((list) =>
-                                  list.map((item) => ItemsRow(item)).toList()),
+                              .order('name', ascending: true)
+                              .map((list) => list
+                                  .map((item) => LocationItemCountsRow(item))
+                                  .toList()),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
@@ -148,21 +150,23 @@ class _ListItemsWidgetState extends State<ListItemsWidget> {
                                 ),
                               );
                             }
-                            List<ItemsRow> editItemListItemsRowList =
+                            List<LocationItemCountsRow>
+                                editLocationListLocationItemCountsRowList =
                                 snapshot.data!;
 
                             return wrapWithModel(
-                              model: _model.editItemListModel,
+                              model: _model.editLocationListModel,
                               updateCallback: () => safeSetState(() {}),
-                              child: EditItemListWidget(
-                                parameter1:
-                                    editItemListItemsRowList.firstOrNull?.name,
-                                parameter2:
-                                    editItemListItemsRowList.firstOrNull?.notes,
-                                parameter3: editItemListItemsRowList
-                                    .firstOrNull?.locations.firstOrNull,
-                                parameter4:
-                                    editItemListItemsRowList.firstOrNull?.id,
+                              child: EditLocationListWidget(
+                                name: editLocationListLocationItemCountsRowList
+                                    .firstOrNull?.name,
+                                notes: editLocationListLocationItemCountsRowList
+                                    .firstOrNull?.notes,
+                                numitems:
+                                    editLocationListLocationItemCountsRowList
+                                        .firstOrNull?.itemCount,
+                                id: editLocationListLocationItemCountsRowList
+                                    .firstOrNull?.id,
                               ),
                             );
                           },

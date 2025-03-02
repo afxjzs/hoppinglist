@@ -5,8 +5,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 import 'edit_item_model.dart';
 export 'edit_item_model.dart';
 
@@ -49,6 +50,8 @@ class _EditItemWidgetState extends State<EditItemWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return FutureBuilder<List<ItemsRow>>(
       future: ItemsTable().querySingleRow(
         queryFn: (q) => q.eqOrNull(
@@ -65,9 +68,10 @@ class _EditItemWidgetState extends State<EditItemWidget> {
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
-                child: SpinKitRing(
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
                 ),
               ),
             ),
@@ -165,6 +169,7 @@ class _EditItemWidgetState extends State<EditItemWidget> {
                                   ),
                                   focusNode: _model.textFieldFocusNode1,
                                   autofocus: false,
+                                  textCapitalization: TextCapitalization.words,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: 'Item Name',
@@ -347,10 +352,19 @@ class _EditItemWidgetState extends State<EditItemWidget> {
                                     ),
                                   ],
                                 ),
-                                FutureBuilder<List<UniqueLocationsViewRow>>(
-                                  future: UniqueLocationsViewTable().queryRows(
-                                    queryFn: (q) => q.order('unique_location'),
-                                  ),
+                                StreamBuilder<List<LocationsRow>>(
+                                  stream: _model.checkboxGroupSupabaseStream ??=
+                                      SupaFlow.client
+                                          .from("locations")
+                                          .stream(primaryKey: ['id'])
+                                          .eqOrNull(
+                                            'group_id',
+                                            FFAppState().groupid,
+                                          )
+                                          .order('name', ascending: true)
+                                          .map((list) => list
+                                              .map((item) => LocationsRow(item))
+                                              .toList()),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -358,25 +372,24 @@ class _EditItemWidgetState extends State<EditItemWidget> {
                                         child: SizedBox(
                                           width: 50.0,
                                           height: 50.0,
-                                          child: SpinKitRing(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
                                           ),
                                         ),
                                       );
                                     }
-                                    List<UniqueLocationsViewRow>
-                                        checkboxGroupUniqueLocationsViewRowList =
+                                    List<LocationsRow>
+                                        checkboxGroupLocationsRowList =
                                         snapshot.data!;
 
                                     return FlutterFlowCheckboxGroup(
-                                      options:
-                                          checkboxGroupUniqueLocationsViewRowList
-                                              .unique((e) => e)
-                                              .map((e) => e.uniqueLocation)
-                                              .withoutNulls
-                                              .toList(),
+                                      options: checkboxGroupLocationsRowList
+                                          .map((e) => e.name)
+                                          .toList(),
                                       onChanged: (val) => safeSetState(() =>
                                           _model.checkboxGroupValues = val),
                                       controller: _model
@@ -412,35 +425,57 @@ class _EditItemWidgetState extends State<EditItemWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
-                          await ItemsTable().update(
-                            data: {
-                              'name': _model.textController1.text,
-                              'notes': _model.textController2.text,
-                              'locations': _model.checkboxGroupValues,
-                            },
-                            matchingRows: (rows) => rows.eqOrNull(
-                              'id',
-                              editItemItemsRow?.id,
-                            ),
-                          );
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(
-                                '${_model.textController1.text} updated!',
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineMedium
-                                    .override(
-                                      fontFamily: 'Plus Jakarta Sans',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
-                                      letterSpacing: 0.0,
-                                    ),
+                          if (_model.checkboxGroupValues!.length > 0) {
+                            await ItemsTable().update(
+                              data: {
+                                'name': _model.textController1.text,
+                                'notes': _model.textController2.text,
+                                'locations': _model.checkboxGroupValues,
+                              },
+                              matchingRows: (rows) => rows.eqOrNull(
+                                'id',
+                                editItemItemsRow?.id,
                               ),
-                              duration: Duration(milliseconds: 4000),
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).tertiary,
-                            ),
-                          );
+                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  '${_model.textController1.text} updated!',
+                                  style: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .override(
+                                        fontFamily: 'Plus Jakarta Sans',
+                                        color: FlutterFlowTheme.of(context)
+                                            .alwaysLight,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
+
+                            context.pushNamed(ListItemsWidget.routeName);
+                          } else {
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text('Location Required'),
+                                  content: Text(
+                                      'You must select at least one location'),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
                         },
                         text: 'Update Item',
                         options: FFButtonOptions(
@@ -451,41 +486,140 @@ class _EditItemWidgetState extends State<EditItemWidget> {
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleMedium.override(
-                                    fontFamily: 'Space Grotesk',
-                                    color: FlutterFlowTheme.of(context).info,
-                                    letterSpacing: 0.0,
-                                  ),
+                          textStyle: FlutterFlowTheme.of(context)
+                              .titleMedium
+                              .override(
+                                fontFamily: 'Space Grotesk',
+                                color: FlutterFlowTheme.of(context).alwaysLight,
+                                letterSpacing: 0.0,
+                              ),
                           elevation: 2.0,
                           borderRadius: BorderRadius.circular(25.0),
                         ),
                       ),
-                      FFButtonWidget(
-                        onPressed: () async {
-                          context.safePop();
-                        },
-                        text: 'Cancel',
-                        options: FFButtonOptions(
-                          height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: Color(0x004B39EF),
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          FFButtonWidget(
+                            onPressed: () async {
+                              context.safePop();
+                            },
+                            text: 'Cancel',
+                            options: FFButtonOptions(
+                              height: 40.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  36.0, 0.0, 36.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Color(0x004B39EF),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
                                     fontFamily: 'Space Grotesk',
                                     color: FlutterFlowTheme.of(context).primary,
                                     letterSpacing: 0.0,
                                   ),
-                          elevation: 0.0,
-                          borderSide: BorderSide(
-                            color: FlutterFlowTheme.of(context).primary,
-                            width: 2.0,
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).primary,
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(58.0),
+                            ),
                           ),
-                          borderRadius: BorderRadius.circular(58.0),
-                        ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onLongPress: () async {
+                              var confirmDialogResponse =
+                                  await showDialog<bool>(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text('Delete Item?'),
+                                            content: Text(
+                                                'Are you sure you want to delete ${editItemItemsRow?.name}?'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, false),
+                                                child: Text('Cancel'),
+                                              ),
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext, true),
+                                                child: Text('Confirm'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      ) ??
+                                      false;
+                              _model.deletedItem = await ItemsTable().delete(
+                                matchingRows: (rows) => rows.eqOrNull(
+                                  'id',
+                                  editItemItemsRow?.id,
+                                ),
+                                returnRows: true,
+                              );
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    '${editItemItemsRow?.name} deleted',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineLarge
+                                        .override(
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          color: FlutterFlowTheme.of(context)
+                                              .alwaysLight,
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                  duration: Duration(milliseconds: 4000),
+                                  backgroundColor:
+                                      FlutterFlowTheme.of(context).secondary,
+                                ),
+                              );
+
+                              context.pushNamed(ListItemsWidget.routeName);
+
+                              safeSetState(() {});
+                            },
+                            child: FFButtonWidget(
+                              onPressed: () {
+                                print('deleteItem pressed ...');
+                              },
+                              text: 'Delete Item?',
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 0.0, 16.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Space Grotesk',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      letterSpacing: 0.0,
+                                    ),
+                                elevation: 0.0,
+                                borderSide: BorderSide(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(24.0),
+                              ),
+                            ),
+                          ),
+                        ].divide(SizedBox(width: 24.0)),
                       ),
                     ].divide(SizedBox(height: 24.0)),
                   ),

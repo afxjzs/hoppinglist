@@ -1,6 +1,6 @@
 import '/backend/supabase/supabase.dart';
-import '/components/primary_checklist_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/scratch/primary_checklist/primary_checklist_widget.dart';
 import 'primary_checklist_container_widget.dart'
     show PrimaryChecklistContainerWidget;
 import 'package:flutter/material.dart';

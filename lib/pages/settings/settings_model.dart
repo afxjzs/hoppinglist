@@ -1,8 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'edit_checklist_item_widget.dart' show EditChecklistItemWidget;
+import '/index.dart';
+import 'settings_widget.dart' show SettingsWidget;
 import 'package:flutter/material.dart';
 
-class EditChecklistItemModel extends FlutterFlowModel<EditChecklistItemWidget> {
+class SettingsModel extends FlutterFlowModel<SettingsWidget> {
   @override
   void initState(BuildContext context) {}
 

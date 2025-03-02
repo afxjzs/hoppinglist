@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FFAppState extends ChangeNotifier {
@@ -20,13 +21,17 @@ class FFAppState extends ChangeNotifier {
       _darkmode = prefs.getBool('ff_darkmode') ?? _darkmode;
     });
     _safeInit(() {
-      _groupid = prefs.getString('ff_groupid') ?? _groupid;
-    });
-    _safeInit(() {
       _groupcode = prefs.getString('ff_groupcode') ?? _groupcode;
     });
     _safeInit(() {
       _groupname = prefs.getString('ff_groupname') ?? _groupname;
+    });
+    _safeInit(() {
+      _groupid = prefs.getInt('ff_groupid') ?? _groupid;
+    });
+    _safeInit(() {
+      _currentLocationName =
+          prefs.getString('ff_currentLocationName') ?? _currentLocationName;
     });
   }
 
@@ -44,44 +49,6 @@ class FFAppState extends ChangeNotifier {
     prefs.setBool('ff_darkmode', value);
   }
 
-  /// list of locations used for selection
-  List<String> _locations = ['Safeway', 'Trader Joe\'s', 'CVS', 'Target'];
-  List<String> get locations => _locations;
-  set locations(List<String> value) {
-    _locations = value;
-  }
-
-  void addToLocations(String value) {
-    locations.add(value);
-  }
-
-  void removeFromLocations(String value) {
-    locations.remove(value);
-  }
-
-  void removeAtIndexFromLocations(int index) {
-    locations.removeAt(index);
-  }
-
-  void updateLocationsAtIndex(
-    int index,
-    String Function(String) updateFn,
-  ) {
-    locations[index] = updateFn(_locations[index]);
-  }
-
-  void insertAtIndexInLocations(int index, String value) {
-    locations.insert(index, value);
-  }
-
-  /// id of the group the user belongs to
-  String _groupid = '';
-  String get groupid => _groupid;
-  set groupid(String value) {
-    _groupid = value;
-    prefs.setString('ff_groupid', value);
-  }
-
   String _groupcode = '';
   String get groupcode => _groupcode;
   set groupcode(String value) {
@@ -94,6 +61,58 @@ class FFAppState extends ChangeNotifier {
   set groupname(String value) {
     _groupname = value;
     prefs.setString('ff_groupname', value);
+  }
+
+  int _groupid = 0;
+  int get groupid => _groupid;
+  set groupid(int value) {
+    _groupid = value;
+    prefs.setInt('ff_groupid', value);
+  }
+
+  String _currentLocationName = '';
+  String get currentLocationName => _currentLocationName;
+  set currentLocationName(String value) {
+    _currentLocationName = value;
+    prefs.setString('ff_currentLocationName', value);
+  }
+
+  String _itemFilterStrong = '';
+  String get itemFilterStrong => _itemFilterStrong;
+  set itemFilterStrong(String value) {
+    _itemFilterStrong = value;
+  }
+
+  List<SingleItemStruct> _NotUsedItemsListDatatype = [];
+  List<SingleItemStruct> get NotUsedItemsListDatatype =>
+      _NotUsedItemsListDatatype;
+  set NotUsedItemsListDatatype(List<SingleItemStruct> value) {
+    _NotUsedItemsListDatatype = value;
+  }
+
+  void addToNotUsedItemsListDatatype(SingleItemStruct value) {
+    NotUsedItemsListDatatype.add(value);
+  }
+
+  void removeFromNotUsedItemsListDatatype(SingleItemStruct value) {
+    NotUsedItemsListDatatype.remove(value);
+  }
+
+  void removeAtIndexFromNotUsedItemsListDatatype(int index) {
+    NotUsedItemsListDatatype.removeAt(index);
+  }
+
+  void updateNotUsedItemsListDatatypeAtIndex(
+    int index,
+    SingleItemStruct Function(SingleItemStruct) updateFn,
+  ) {
+    NotUsedItemsListDatatype[index] =
+        updateFn(_NotUsedItemsListDatatype[index]);
+  }
+
+  void insertAtIndexInNotUsedItemsListDatatype(
+      int index, SingleItemStruct value) {
+    NotUsedItemsListDatatype.insert(index, value);
   }
 }
 

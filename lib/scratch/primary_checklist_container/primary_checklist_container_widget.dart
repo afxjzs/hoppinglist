@@ -1,9 +1,8 @@
 import '/backend/supabase/supabase.dart';
-import '/components/primary_checklist_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/scratch/primary_checklist/primary_checklist_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'primary_checklist_container_model.dart';
 export 'primary_checklist_container_model.dart';
 
@@ -62,9 +61,10 @@ class _PrimaryChecklistContainerWidgetState
               child: SizedBox(
                 width: 50.0,
                 height: 50.0,
-                child: SpinKitRing(
-                  color: FlutterFlowTheme.of(context).primary,
-                  size: 50.0,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                    FlutterFlowTheme.of(context).primary,
+                  ),
                 ),
               ),
             );

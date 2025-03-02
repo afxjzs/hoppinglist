@@ -6,6 +6,8 @@ export 'row.dart';
 export 'table.dart';
 
 export 'tables/groups.dart';
+export 'tables/locations.dart';
+export 'tables/location_item_counts.dart';
 export 'tables/list_items.dart';
 export 'tables/unique_locations_view.dart';
 export 'tables/users.dart';

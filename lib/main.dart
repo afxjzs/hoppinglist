@@ -10,6 +10,7 @@ import 'auth/custom_auth/custom_auth_user_provider.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'index.dart';
 
 void main() async {
@@ -134,46 +135,44 @@ class _NavBarPageState extends State<NavBarPage> {
     final tabs = {
       'HomePage': HomePageWidget(),
       'AddItem': AddItemWidget(),
-      'ListItems': ListItemsWidget(),
+      'Settings': SettingsWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
     return Scaffold(
       body: _currentPage ?? tabs[_currentPageName],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (i) => safeSetState(() {
+      bottomNavigationBar: GNav(
+        selectedIndex: currentIndex,
+        onTabChange: (i) => safeSetState(() {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        selectedItemColor: FlutterFlowTheme.of(context).primary,
-        unselectedItemColor: FlutterFlowTheme.of(context).secondaryText,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.list_alt_rounded,
-              size: 24.0,
-            ),
-            label: 'Home',
-            tooltip: '',
+        color: FlutterFlowTheme.of(context).secondaryText,
+        activeColor: FlutterFlowTheme.of(context).primary,
+        tabBackgroundColor: Color(0x00000000),
+        tabBorderRadius: 100.0,
+        tabMargin: EdgeInsets.all(0.0),
+        padding: EdgeInsets.all(12.0),
+        gap: 0.0,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        duration: Duration(milliseconds: 500),
+        haptic: false,
+        tabs: [
+          GButton(
+            icon: Icons.list_alt_rounded,
+            text: '',
+            iconSize: 36.0,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add_circle,
-            ),
-            label: '',
-            tooltip: '',
+          GButton(
+            icon: Icons.add_circle,
+            text: '',
+            iconSize: 36.0,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.settings_rounded,
-            ),
-            label: '',
-            tooltip: '',
+          GButton(
+            icon: Icons.settings_rounded,
+            text: '',
+            iconSize: 36.0,
           )
         ],
       ),

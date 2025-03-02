@@ -1,5 +1,5 @@
 import '/backend/supabase/supabase.dart';
-import '/components/need_have_divider_widget.dart';
+import '/components/need_have_divider/need_have_divider_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/index.dart';
@@ -9,6 +9,9 @@ import 'package:flutter/material.dart';
 class HomePageModel extends FlutterFlowModel<HomePageWidget> {
   ///  State fields for stateful widgets in this page.
 
+  Stream<List<LocationsRow>>? homePageSupabaseStream;
+  // Stores action output result for [Backend Call - Query Rows] action in HomePage widget.
+  List<LocationItemCountsRow>? mostItems;
   // State field(s) for LocationSelector widget.
   String? locationSelectorValue;
   FormFieldController<String>? locationSelectorValueController;

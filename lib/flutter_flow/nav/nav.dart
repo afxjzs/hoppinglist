@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/schema/structs/index.dart';
+
 
 import '/auth/custom_auth/custom_auth_user_provider.dart';
 
@@ -88,6 +90,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: HomePageWidget.routeName,
           path: HomePageWidget.routePath,
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'HomePage')
               : NavBarPage(
@@ -123,9 +126,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ListItemsWidget.routeName,
           path: ListItemsWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ListItems')
-              : ListItemsWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: ListItemsWidget(),
+          ),
         ),
         FFRoute(
           name: ListItemsAllWidget.routeName,
@@ -136,6 +140,39 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: SelectGroupWidget.routeName,
           path: SelectGroupWidget.routePath,
           builder: (context, params) => SelectGroupWidget(),
+        ),
+        FFRoute(
+          name: SettingsWidget.routeName,
+          path: SettingsWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Settings')
+              : SettingsWidget(),
+        ),
+        FFRoute(
+          name: AddLocationWidget.routeName,
+          path: AddLocationWidget.routePath,
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AddLocationWidget(),
+          ),
+        ),
+        FFRoute(
+          name: EditLocationWidget.routeName,
+          path: EditLocationWidget.routePath,
+          builder: (context, params) => EditLocationWidget(
+            locationID: params.getParam(
+              'locationID',
+              ParamType.int,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ListLocationsWidget.routeName,
+          path: ListLocationsWidget.routePath,
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: ListLocationsWidget(),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -254,6 +291,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -271,6 +309,7 @@ class FFParameters {
       param,
       type,
       isList,
+      structBuilder: structBuilder,
     );
   }
 }

@@ -1,9 +1,9 @@
-import '/components/edit_checklist_item_widget.dart';
+import '/components/edit_item_single/edit_item_single_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'edit_checklist_widget.dart' show EditChecklistWidget;
+import 'edit_item_list_widget.dart' show EditItemListWidget;
 import 'package:flutter/material.dart';
 
-class EditChecklistModel extends FlutterFlowModel<EditChecklistWidget> {
+class EditItemListModel extends FlutterFlowModel<EditItemListWidget> {
   ///  Local state fields for this component.
 
   List<dynamic> listData = [];
@@ -17,17 +17,17 @@ class EditChecklistModel extends FlutterFlowModel<EditChecklistWidget> {
 
   ///  State fields for stateful widgets in this component.
 
-  // Models for EditChecklistItem dynamic component.
-  late FlutterFlowDynamicModels<EditChecklistItemModel> editChecklistItemModels;
+  // Models for EditItemSingle dynamic component.
+  late FlutterFlowDynamicModels<EditItemSingleModel> editItemSingleModels;
 
   @override
   void initState(BuildContext context) {
-    editChecklistItemModels =
-        FlutterFlowDynamicModels(() => EditChecklistItemModel());
+    editItemSingleModels =
+        FlutterFlowDynamicModels(() => EditItemSingleModel());
   }
 
   @override
   void dispose() {
-    editChecklistItemModels.dispose();
+    editItemSingleModels.dispose();
   }
 }

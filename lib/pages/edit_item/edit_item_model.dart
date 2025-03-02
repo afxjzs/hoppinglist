@@ -1,5 +1,7 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'edit_item_widget.dart' show EditItemWidget;
 import 'package:flutter/material.dart';
 
@@ -19,6 +21,10 @@ class EditItemModel extends FlutterFlowModel<EditItemWidget> {
   List<String>? get checkboxGroupValues => checkboxGroupValueController?.value;
   set checkboxGroupValues(List<String>? v) =>
       checkboxGroupValueController?.value = v;
+
+  Stream<List<LocationsRow>>? checkboxGroupSupabaseStream;
+  // Stores action output result for [Backend Call - Delete Row(s)] action in deleteItem widget.
+  List<ItemsRow>? deletedItem;
 
   @override
   void initState(BuildContext context) {}

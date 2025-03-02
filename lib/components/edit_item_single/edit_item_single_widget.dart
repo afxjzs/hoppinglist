@@ -3,12 +3,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'edit_checklist_item_model.dart';
-export 'edit_checklist_item_model.dart';
+import 'edit_item_single_model.dart';
+export 'edit_item_single_model.dart';
 
 /// the main piece of a edit item row
-class EditChecklistItemWidget extends StatefulWidget {
-  const EditChecklistItemWidget({
+class EditItemSingleWidget extends StatefulWidget {
+  const EditItemSingleWidget({
     super.key,
     this.parameter1,
     this.parameter2,
@@ -22,12 +22,11 @@ class EditChecklistItemWidget extends StatefulWidget {
   final int? parameter4;
 
   @override
-  State<EditChecklistItemWidget> createState() =>
-      _EditChecklistItemWidgetState();
+  State<EditItemSingleWidget> createState() => _EditItemSingleWidgetState();
 }
 
-class _EditChecklistItemWidgetState extends State<EditChecklistItemWidget> {
-  late EditChecklistItemModel _model;
+class _EditItemSingleWidgetState extends State<EditItemSingleWidget> {
+  late EditItemSingleModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -38,7 +37,7 @@ class _EditChecklistItemWidgetState extends State<EditChecklistItemWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EditChecklistItemModel());
+    _model = createModel(context, () => EditItemSingleModel());
   }
 
   @override

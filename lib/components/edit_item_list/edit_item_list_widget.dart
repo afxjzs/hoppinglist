@@ -1,15 +1,15 @@
 import '/backend/supabase/supabase.dart';
-import '/components/edit_checklist_item_widget.dart';
+import '/components/edit_item_single/edit_item_single_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'edit_checklist_model.dart';
-export 'edit_checklist_model.dart';
+import 'package:provider/provider.dart';
+import 'edit_item_list_model.dart';
+export 'edit_item_list_model.dart';
 
 /// the edit list for the list items
-class EditChecklistWidget extends StatefulWidget {
-  const EditChecklistWidget({
+class EditItemListWidget extends StatefulWidget {
+  const EditItemListWidget({
     super.key,
     this.parameter1,
     this.parameter2,
@@ -23,11 +23,11 @@ class EditChecklistWidget extends StatefulWidget {
   final int? parameter4;
 
   @override
-  State<EditChecklistWidget> createState() => _EditChecklistWidgetState();
+  State<EditItemListWidget> createState() => _EditItemListWidgetState();
 }
 
-class _EditChecklistWidgetState extends State<EditChecklistWidget> {
-  late EditChecklistModel _model;
+class _EditItemListWidgetState extends State<EditItemListWidget> {
+  late EditItemListModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -38,7 +38,7 @@ class _EditChecklistWidgetState extends State<EditChecklistWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => EditChecklistModel());
+    _model = createModel(context, () => EditItemListModel());
   }
 
   @override
@@ -50,9 +50,16 @@ class _EditChecklistWidgetState extends State<EditChecklistWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return FutureBuilder<List<ItemsRow>>(
       future: ItemsTable().queryRows(
-        queryFn: (q) => q.order('name', ascending: true),
+        queryFn: (q) => q
+            .eqOrNull(
+              'group_id',
+              FFAppState().groupid,
+            )
+            .order('name', ascending: true),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -61,9 +68,10 @@ class _EditChecklistWidgetState extends State<EditChecklistWidget> {
             child: SizedBox(
               width: 50.0,
               height: 50.0,
-              child: SpinKitRing(
-                color: FlutterFlowTheme.of(context).primary,
-                size: 50.0,
+              child: CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  FlutterFlowTheme.of(context).primary,
+                ),
               ),
             ),
           );
@@ -80,13 +88,13 @@ class _EditChecklistWidgetState extends State<EditChecklistWidget> {
           itemBuilder: (context, listViewIndex) {
             final listViewItemsRow = listViewItemsRowList[listViewIndex];
             return wrapWithModel(
-              model: _model.editChecklistItemModels.getModel(
+              model: _model.editItemSingleModels.getModel(
                 listViewItemsRow.id.toString(),
                 listViewIndex,
               ),
               updateCallback: () => safeSetState(() {}),
               updateOnChange: true,
-              child: EditChecklistItemWidget(
+              child: EditItemSingleWidget(
                 key: Key(
                   'Key6vt_${listViewItemsRow.id.toString()}',
                 ),

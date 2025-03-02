@@ -56,6 +56,7 @@ class _NeedHaveDividerWidgetState extends State<NeedHaveDividerWidget> {
                 'Need   |   Have',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Space Grotesk',
+                      fontSize: 17.0,
                       letterSpacing: 0.0,
                     ),
               ),
