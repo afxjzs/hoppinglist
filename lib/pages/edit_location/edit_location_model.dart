@@ -18,6 +18,10 @@ class EditLocationModel extends FlutterFlowModel<EditLocationWidget> {
       return 'name is required';
     }
 
+    if (val.length < 2) {
+      return 'Need 2 characters';
+    }
+
     return null;
   }
 
@@ -28,7 +32,7 @@ class EditLocationModel extends FlutterFlowModel<EditLocationWidget> {
   // Stores action output result for [Backend Call - Update Row(s)] action in Button widget.
   List<LocationsRow>? locationUpdateOutput;
   // Stores action output result for [Backend Call - Delete Row(s)] action in deleteItem widget.
-  List<ItemsRow>? deletedItem;
+  List<LocationsRow>? deletedItem;
 
   @override
   void initState(BuildContext context) {

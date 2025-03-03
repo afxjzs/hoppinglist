@@ -263,7 +263,7 @@ class _SelectGroupWidgetState extends State<SelectGroupWidget> {
                         text: 'Join',
                         options: FFButtonOptions(
                           width: MediaQuery.sizeOf(context).width * 1.0,
-                          height: 40.0,
+                          height: 60.0,
                           padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -273,10 +273,11 @@ class _SelectGroupWidgetState extends State<SelectGroupWidget> {
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Space Grotesk',
                                     color: Colors.white,
+                                    fontSize: 24.0,
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 0.0,
-                          borderRadius: BorderRadius.circular(8.0),
+                          borderRadius: BorderRadius.circular(28.0),
                         ),
                       ),
                     ].divide(SizedBox(height: 12.0)),

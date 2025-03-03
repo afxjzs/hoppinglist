@@ -264,6 +264,10 @@ class _AddLocationWidgetState extends State<AddLocationWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        if (_model.formKey.currentState == null ||
+                            !_model.formKey.currentState!.validate()) {
+                          return;
+                        }
                         _model.locationAddedResult =
                             await LocationsTable().insert({
                           'name': _model.locationNameTextController.text,

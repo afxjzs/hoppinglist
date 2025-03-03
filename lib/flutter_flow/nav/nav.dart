@@ -126,10 +126,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ListItemsWidget.routeName,
           path: ListItemsWidget.routePath,
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: ListItemsWidget(),
-          ),
+          builder: (context, params) => ListItemsWidget(),
         ),
         FFRoute(
           name: ListItemsAllWidget.routeName,
@@ -151,10 +148,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: AddLocationWidget.routeName,
           path: AddLocationWidget.routePath,
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AddLocationWidget(),
-          ),
+          builder: (context, params) => AddLocationWidget(),
         ),
         FFRoute(
           name: EditLocationWidget.routeName,
@@ -169,10 +163,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ListLocationsWidget.routeName,
           path: ListLocationsWidget.routePath,
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: ListLocationsWidget(),
-          ),
+          builder: (context, params) => ListLocationsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

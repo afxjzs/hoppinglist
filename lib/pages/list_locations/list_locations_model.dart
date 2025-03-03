@@ -1,6 +1,7 @@
 import '/backend/supabase/supabase.dart';
 import '/components/edit_location_list/edit_location_list_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'list_locations_widget.dart' show ListLocationsWidget;
 import 'package:flutter/material.dart';
 

@@ -8,12 +8,25 @@ import 'package:flutter/material.dart';
 class EditItemModel extends FlutterFlowModel<EditItemWidget> {
   ///  State fields for stateful widgets in this page.
 
+  final formKey = GlobalKey<FormState>();
+  // State field(s) for itemName widget.
+  FocusNode? itemNameFocusNode;
+  TextEditingController? itemNameTextController;
+  String? Function(BuildContext, String?)? itemNameTextControllerValidator;
+  String? _itemNameTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'name is required';
+    }
+
+    if (val.length < 2) {
+      return 'More than 2 characters';
+    }
+
+    return null;
+  }
+
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
+  FocusNode? textFieldFocusNode;
   TextEditingController? textController2;
   String? Function(BuildContext, String?)? textController2Validator;
   // State field(s) for CheckboxGroup widget.
@@ -27,14 +40,16 @@ class EditItemModel extends FlutterFlowModel<EditItemWidget> {
   List<ItemsRow>? deletedItem;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    itemNameTextControllerValidator = _itemNameTextControllerValidator;
+  }
 
   @override
   void dispose() {
-    textFieldFocusNode1?.dispose();
-    textController1?.dispose();
+    itemNameFocusNode?.dispose();
+    itemNameTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
+    textFieldFocusNode?.dispose();
     textController2?.dispose();
   }
 }

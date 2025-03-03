@@ -206,7 +206,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                               ),
                                           elevation: 0.0,
                                           borderRadius:
-                                              BorderRadius.circular(8.0),
+                                              BorderRadius.circular(44.0),
                                         ),
                                       ),
                                       FFButtonWidget(
@@ -244,7 +244,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                               ),
                                           elevation: 0.0,
                                           borderRadius:
-                                              BorderRadius.circular(8.0),
+                                              BorderRadius.circular(44.0),
                                         ),
                                       ),
                                     ].divide(SizedBox(height: 12.0)),
@@ -337,7 +337,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                               ),
                                           elevation: 0.0,
                                           borderRadius:
-                                              BorderRadius.circular(8.0),
+                                              BorderRadius.circular(44.0),
                                         ),
                                       ),
                                       FFButtonWidget(
@@ -375,7 +375,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                               ),
                                           elevation: 0.0,
                                           borderRadius:
-                                              BorderRadius.circular(8.0),
+                                              BorderRadius.circular(44.0),
                                         ),
                                       ),
                                     ].divide(SizedBox(height: 12.0)),
@@ -429,6 +429,11 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           ) ??
                           false;
                       if (confirmDialogResponse) {
+                        FFAppState().currentLocationName = '';
+                        FFAppState().groupcode = '';
+                        FFAppState().groupid = 0;
+                        FFAppState().groupname = '';
+                        safeSetState(() {});
                         GoRouter.of(context).prepareAuthEvent();
                         await authManager.signOut();
                         GoRouter.of(context).clearRedirectLocation();
@@ -464,7 +469,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           color: FlutterFlowTheme.of(context).secondaryText,
                           width: 2.0,
                         ),
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(44.0),
                       ),
                     ),
                   ),

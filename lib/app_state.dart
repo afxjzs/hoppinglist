@@ -77,12 +77,6 @@ class FFAppState extends ChangeNotifier {
     prefs.setString('ff_currentLocationName', value);
   }
 
-  String _itemFilterStrong = '';
-  String get itemFilterStrong => _itemFilterStrong;
-  set itemFilterStrong(String value) {
-    _itemFilterStrong = value;
-  }
-
   List<SingleItemStruct> _NotUsedItemsListDatatype = [];
   List<SingleItemStruct> get NotUsedItemsListDatatype =>
       _NotUsedItemsListDatatype;

@@ -132,7 +132,7 @@ class _EditLocationWidgetState extends State<EditLocationWidget> {
                     children: [
                       Form(
                         key: _model.formKey,
-                        autovalidateMode: AutovalidateMode.disabled,
+                        autovalidateMode: AutovalidateMode.always,
                         child: Material(
                           color: Colors.transparent,
                           elevation: 1.0,
@@ -314,6 +314,10 @@ class _EditLocationWidgetState extends State<EditLocationWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          if (_model.formKey.currentState == null ||
+                              !_model.formKey.currentState!.validate()) {
+                            return;
+                          }
                           _model.locationUpdateOutput =
                               await LocationsTable().update(
                             data: {
@@ -427,7 +431,8 @@ class _EditLocationWidgetState extends State<EditLocationWidget> {
                                         },
                                       ) ??
                                       false;
-                              _model.deletedItem = await ItemsTable().delete(
+                              _model.deletedItem =
+                                  await LocationsTable().delete(
                                 matchingRows: (rows) => rows.eqOrNull(
                                   'id',
                                   editLocationLocationsRow?.id,
@@ -453,7 +458,7 @@ class _EditLocationWidgetState extends State<EditLocationWidget> {
                                 ),
                               );
 
-                              context.pushNamed(ListItemsWidget.routeName);
+                              context.pushNamed(ListLocationsWidget.routeName);
 
                               safeSetState(() {});
                             },

@@ -16,6 +16,10 @@ class AddItemModel extends FlutterFlowModel<AddItemWidget> {
       return 'Item Name is required';
     }
 
+    if (val.length < 2) {
+      return 'Atleast 2 characters';
+    }
+
     return null;
   }
 

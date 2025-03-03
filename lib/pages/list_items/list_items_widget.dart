@@ -4,6 +4,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'list_items_model.dart';
@@ -168,6 +170,37 @@ class _ListItemsWidgetState extends State<ListItemsWidget> {
                           },
                         ),
                       ].divide(SizedBox(height: 16.0)),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 44.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed(AddItemWidget.routeName);
+                    },
+                    text: 'Add New Item',
+                    icon: Icon(
+                      Icons.add_circle_outline_rounded,
+                      color: FlutterFlowTheme.of(context).alwaysLight,
+                      size: 15.0,
+                    ),
+                    options: FFButtonOptions(
+                      width: 200.0,
+                      height: 60.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Space Grotesk',
+                                color: FlutterFlowTheme.of(context).alwaysLight,
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(44.0),
                     ),
                   ),
                 ),

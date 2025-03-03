@@ -423,6 +423,10 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                         FFButtonWidget(
                           onPressed: () async {
                             if (_model.checkboxGroupValues!.length > 0) {
+                              if (_model.formKey.currentState == null ||
+                                  !_model.formKey.currentState!.validate()) {
+                                return;
+                              }
                               await ItemsTable().insert({
                                 'name': _model.itemNameTextController.text,
                                 'notes': _model.itemNotesTextController.text,

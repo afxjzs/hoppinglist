@@ -2,8 +2,9 @@ import '/backend/supabase/supabase.dart';
 import '/components/edit_location_list/edit_location_list_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'list_locations_model.dart';
@@ -73,29 +74,7 @@ class _ListLocationsWidgetState extends State<ListLocationsWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: [
-            ToggleIcon(
-              onPressed: () async {
-                safeSetState(
-                    () => FFAppState().darkmode = !FFAppState().darkmode);
-                setDarkModeSetting(
-                  context,
-                  FFAppState().darkmode ? ThemeMode.dark : ThemeMode.light,
-                );
-              },
-              value: FFAppState().darkmode,
-              onIcon: Icon(
-                Icons.wb_sunny_rounded,
-                color: FlutterFlowTheme.of(context).info,
-                size: 24.0,
-              ),
-              offIcon: Icon(
-                Icons.dark_mode_outlined,
-                color: FlutterFlowTheme.of(context).info,
-                size: 24.0,
-              ),
-            ),
-          ],
+          actions: [],
           flexibleSpace: FlexibleSpaceBar(
             background: ClipRRect(
               borderRadius: BorderRadius.circular(0.0),
@@ -172,6 +151,37 @@ class _ListLocationsWidgetState extends State<ListLocationsWidget> {
                           },
                         ),
                       ].divide(SizedBox(height: 16.0)),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 44.0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      context.pushNamed(AddLocationWidget.routeName);
+                    },
+                    text: 'Add New Location',
+                    icon: Icon(
+                      Icons.add_circle_outline_rounded,
+                      color: FlutterFlowTheme.of(context).alwaysLight,
+                      size: 15.0,
+                    ),
+                    options: FFButtonOptions(
+                      width: 200.0,
+                      height: 60.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primary,
+                      textStyle:
+                          FlutterFlowTheme.of(context).titleSmall.override(
+                                fontFamily: 'Space Grotesk',
+                                color: FlutterFlowTheme.of(context).alwaysLight,
+                                letterSpacing: 0.0,
+                              ),
+                      elevation: 0.0,
+                      borderRadius: BorderRadius.circular(44.0),
                     ),
                   ),
                 ),
