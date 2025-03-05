@@ -4,36 +4,40 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'select_group_model.dart';
-export 'select_group_model.dart';
+import 'create_group_model.dart';
+export 'create_group_model.dart';
 
 /// Onboarding page where user selects which group they're in
-class SelectGroupWidget extends StatefulWidget {
-  const SelectGroupWidget({super.key});
+class CreateGroupWidget extends StatefulWidget {
+  const CreateGroupWidget({super.key});
 
-  static String routeName = 'SelectGroup';
-  static String routePath = '/selectGroup';
+  static String routeName = 'CreateGroup';
+  static String routePath = '/createGroup';
 
   @override
-  State<SelectGroupWidget> createState() => _SelectGroupWidgetState();
+  State<CreateGroupWidget> createState() => _CreateGroupWidgetState();
 }
 
-class _SelectGroupWidgetState extends State<SelectGroupWidget> {
-  late SelectGroupModel _model;
+class _CreateGroupWidgetState extends State<CreateGroupWidget> {
+  late CreateGroupModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => SelectGroupModel());
+    _model = createModel(context, () => CreateGroupModel());
 
     _model.groupCodeTextController ??= TextEditingController();
     _model.groupCodeFocusNode ??= FocusNode();
+
+    _model.groupPinTextController ??= TextEditingController();
+    _model.groupPinFocusNode ??= FocusNode();
   }
 
   @override
@@ -59,7 +63,7 @@ class _SelectGroupWidgetState extends State<SelectGroupWidget> {
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
           title: Text(
-            'Enter Group ID',
+            'Create a New Group',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Plus Jakarta Sans',
                   color: Colors.white,
@@ -146,7 +150,6 @@ class _SelectGroupWidgetState extends State<SelectGroupWidget> {
                                   fontFamily: 'Space Grotesk',
                                   letterSpacing: 0.0,
                                 ),
-                            hintText: 'Enter Group Code',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
@@ -189,10 +192,12 @@ class _SelectGroupWidgetState extends State<SelectGroupWidget> {
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Space Grotesk',
-                                    fontSize: 44.0,
+                                    fontSize: 28.0,
                                     letterSpacing: 0.0,
                                   ),
                           textAlign: TextAlign.center,
+                          maxLength: 12,
+                          maxLengthEnforcement: MaxLengthEnforcement.enforced,
                           cursorColor: FlutterFlowTheme.of(context).primaryText,
                           validator: _model.groupCodeTextControllerValidator
                               .asValidator(context),
@@ -202,9 +207,94 @@ class _SelectGroupWidgetState extends State<SelectGroupWidget> {
                           ],
                         ),
                       ),
+                      Container(
+                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        child: TextFormField(
+                          controller: _model.groupPinTextController,
+                          focusNode: _model.groupPinFocusNode,
+                          onFieldSubmitted: (_) async {
+                            _model.formOutputPIN = true;
+                            if (_model.formKey.currentState == null ||
+                                !_model.formKey.currentState!.validate()) {
+                              safeSetState(() => _model.formOutputPIN = false);
+                              return;
+                            }
+
+                            safeSetState(() {});
+                          },
+                          autofocus: false,
+                          textCapitalization: TextCapitalization.none,
+                          textInputAction: TextInputAction.go,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            isDense: false,
+                            labelText: 'Group PIN',
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Space Grotesk',
+                                  letterSpacing: 0.0,
+                                ),
+                            alignLabelWithHint: false,
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Space Grotesk',
+                                  fontSize: 24.0,
+                                  letterSpacing: 0.0,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                            filled: true,
+                            fillColor: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Space Grotesk',
+                                    fontSize: 28.0,
+                                    letterSpacing: 0.0,
+                                  ),
+                          textAlign: TextAlign.center,
+                          maxLength: 4,
+                          maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                          keyboardType: TextInputType.number,
+                          cursorColor: FlutterFlowTheme.of(context).primaryText,
+                          validator: _model.groupPinTextControllerValidator
+                              .asValidator(context),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp('[0-9]'))
+                          ],
+                        ),
+                      ),
                       FFButtonWidget(
                         onPressed: () async {
-                          Function() _navigate = () {};
                           _model.validatedFormOutput = true;
                           if (_model.formKey.currentState == null ||
                               !_model.formKey.currentState!.validate()) {
@@ -212,55 +302,59 @@ class _SelectGroupWidgetState extends State<SelectGroupWidget> {
                                 () => _model.validatedFormOutput = false);
                             return;
                           }
-                          _model.queryResult = await GroupsTable().queryRows(
-                            queryFn: (q) => q.ilike(
+                          _model.uniqueGroupCodeCheck =
+                              await GroupsTable().queryRows(
+                            queryFn: (q) => q.eqOrNull(
                               'code',
                               _model.groupCodeTextController.text,
                             ),
                           );
-                          if (_model.queryResult?.length == 1) {
-                            FFAppState().groupcode =
-                                _model.queryResult!.firstOrNull!.code!;
-                            FFAppState().groupname =
-                                _model.queryResult!.firstOrNull!.name!;
-                            FFAppState().groupid =
-                                _model.queryResult!.firstOrNull!.id;
+                          if (_model.uniqueGroupCodeCheck!.length > 0) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Group Code is Taken',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .alwaysLight,
+                                  ),
+                                ),
+                                duration: Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
+                          } else {
+                            _model.insertResult = await GroupsTable().insert({
+                              'code': _model.groupCodeTextController.text,
+                              'pin': _model.groupPinTextController.text,
+                              'name': random_data.randomString(
+                                4,
+                                12,
+                                true,
+                                false,
+                                false,
+                              ),
+                            });
+                            FFAppState().groupcode = _model.insertResult!.code!;
+                            FFAppState().groupname = _model.insertResult!.name!;
+                            FFAppState().groupid = _model.insertResult!.id;
                             safeSetState(() {});
                             GoRouter.of(context).prepareAuthEvent();
                             await authManager.signIn(
                               authenticationToken: FFAppState().groupcode,
                               refreshToken: FFAppState().groupcode,
                               tokenExpiration: functions.oneYearFromNow(),
-                              authUid: _model.queryResult?.firstOrNull?.id
-                                  .toString(),
+                              authUid: _model.insertResult?.id.toString(),
                             );
-                            _navigate = () => context.goNamedAuth(
-                                HomePageWidget.routeName, context.mounted);
-                          } else {
-                            await showDialog(
-                              context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text('Group Not Found'),
-                                  content: Text(
-                                      'Sorry, that is not a valid group name. Please try again.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text('Ok'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          }
 
-                          _navigate();
+                            context.pushNamedAuth(
+                                AddLocationWidget.routeName, context.mounted);
+                          }
 
                           safeSetState(() {});
                         },
-                        text: 'Join',
+                        text: 'Create Group',
                         options: FFButtonOptions(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           height: 60.0,
@@ -282,6 +376,37 @@ class _SelectGroupWidgetState extends State<SelectGroupWidget> {
                       ),
                     ].divide(SizedBox(height: 12.0)),
                   ),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Already in a group? ',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Space Grotesk',
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(JoinGroupWidget.routeName);
+                      },
+                      child: Text(
+                        'Join here',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Space Grotesk',
+                              color: FlutterFlowTheme.of(context).primary,
+                              letterSpacing: 0.0,
+                              decoration: TextDecoration.underline,
+                            ),
+                      ),
+                    ),
+                  ],
                 ),
               ].divide(SizedBox(height: 16.0)),
             ),

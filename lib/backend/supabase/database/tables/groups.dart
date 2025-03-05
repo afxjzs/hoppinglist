@@ -28,4 +28,7 @@ class GroupsRow extends SupabaseDataRow {
 
   String? get name => getField<String>('name');
   set name(String? value) => setField<String>('name', value);
+
+  String get pin => getField<String>('pin')!;
+  set pin(String value) => setField<String>('pin', value);
 }

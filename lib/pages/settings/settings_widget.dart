@@ -396,90 +396,90 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                         letterSpacing: 0.0,
                       ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 24.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onLongPress: () async {
-                      Function() _navigate = () {};
-                      var confirmDialogResponse = await showDialog<bool>(
-                            context: context,
-                            builder: (alertDialogContext) {
-                              return AlertDialog(
-                                title: Text('Log Out'),
-                                content:
-                                    Text('Are you sure you want to log out?'),
-                                actions: [
-                                  TextButton(
-                                    onPressed: () => Navigator.pop(
-                                        alertDialogContext, false),
-                                    child: Text('No'),
-                                  ),
-                                  TextButton(
-                                    onPressed: () =>
-                                        Navigator.pop(alertDialogContext, true),
-                                    child: Text('Yup'),
-                                  ),
-                                ],
-                              );
-                            },
-                          ) ??
-                          false;
-                      if (confirmDialogResponse) {
-                        FFAppState().currentLocationName = '';
-                        FFAppState().groupcode = '';
-                        FFAppState().groupid = 0;
-                        FFAppState().groupname = '';
-                        safeSetState(() {});
-                        GoRouter.of(context).prepareAuthEvent();
-                        await authManager.signOut();
-                        GoRouter.of(context).clearRedirectLocation();
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onLongPress: () async {
+                    Function() _navigate = () {};
+                    var confirmDialogResponse = await showDialog<bool>(
+                          context: context,
+                          builder: (alertDialogContext) {
+                            return AlertDialog(
+                              title: Text('Log Out'),
+                              content:
+                                  Text('Are you sure you want to log out?'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext, false),
+                                  child: Text('No'),
+                                ),
+                                TextButton(
+                                  onPressed: () =>
+                                      Navigator.pop(alertDialogContext, true),
+                                  child: Text('Yup'),
+                                ),
+                              ],
+                            );
+                          },
+                        ) ??
+                        false;
+                    if (confirmDialogResponse) {
+                      FFAppState().currentLocationName = '';
+                      FFAppState().groupcode = '';
+                      FFAppState().groupid = 0;
+                      FFAppState().groupname = '';
+                      safeSetState(() {});
+                      GoRouter.of(context).prepareAuthEvent();
+                      await authManager.signOut();
+                      GoRouter.of(context).clearRedirectLocation();
 
-                        _navigate = () => context.goNamedAuth(
-                            SelectGroupWidget.routeName, context.mounted);
-                      }
+                      _navigate = () => context.goNamedAuth(
+                          JoinGroupWidget.routeName, context.mounted);
+                    }
 
-                      _navigate();
+                    _navigate();
+                  },
+                  child: FFButtonWidget(
+                    onPressed: () {
+                      print('Button pressed ...');
                     },
-                    child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: 'Log Out?',
-                      options: FFButtonOptions(
-                        width: 200.0,
-                        height: 60.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: FlutterFlowTheme.of(context).primaryBackground,
-                        textStyle: FlutterFlowTheme.of(context)
-                            .titleSmall
-                            .override(
-                              fontFamily: 'Space Grotesk',
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              letterSpacing: 0.0,
-                            ),
-                        elevation: 0.0,
-                        borderSide: BorderSide(
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          width: 2.0,
-                        ),
-                        borderRadius: BorderRadius.circular(44.0),
+                    text: 'Log Out?',
+                    options: FFButtonOptions(
+                      width: 200.0,
+                      height: 60.0,
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                      iconPadding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: FlutterFlowTheme.of(context).primaryBackground,
+                      textStyle: FlutterFlowTheme.of(context)
+                          .titleSmall
+                          .override(
+                            fontFamily: 'Space Grotesk',
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            letterSpacing: 0.0,
+                          ),
+                      elevation: 0.0,
+                      borderSide: BorderSide(
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        width: 2.0,
                       ),
+                      borderRadius: BorderRadius.circular(44.0),
                     ),
                   ),
                 ),
-                Text(
-                  'Made with 🩷by Doug',
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Space Grotesk',
-                        letterSpacing: 0.0,
-                      ),
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 36.0),
+                  child: Text(
+                    'Made with 🩷by Doug',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Space Grotesk',
+                          letterSpacing: 0.0,
+                        ),
+                  ),
                 ),
               ].divide(SizedBox(height: 16.0)),
             ),

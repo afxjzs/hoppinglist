@@ -79,13 +79,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : SelectGroupWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : JoinGroupWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : SelectGroupWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : JoinGroupWidget(),
         ),
         FFRoute(
           name: HomePageWidget.routeName,
@@ -97,11 +97,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   initialPage: 'HomePage',
                   page: HomePageWidget(),
                 ),
-        ),
-        FFRoute(
-          name: AltHomeWidget.routeName,
-          path: AltHomeWidget.routePath,
-          builder: (context, params) => AltHomeWidget(),
         ),
         FFRoute(
           name: AddItemWidget.routeName,
@@ -129,14 +124,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ListItemsWidget(),
         ),
         FFRoute(
-          name: ListItemsAllWidget.routeName,
-          path: ListItemsAllWidget.routePath,
-          builder: (context, params) => ListItemsAllWidget(),
-        ),
-        FFRoute(
-          name: SelectGroupWidget.routeName,
-          path: SelectGroupWidget.routePath,
-          builder: (context, params) => SelectGroupWidget(),
+          name: JoinGroupWidget.routeName,
+          path: JoinGroupWidget.routePath,
+          builder: (context, params) => JoinGroupWidget(),
         ),
         FFRoute(
           name: SettingsWidget.routeName,
@@ -164,6 +154,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ListLocationsWidget.routeName,
           path: ListLocationsWidget.routePath,
           builder: (context, params) => ListLocationsWidget(),
+        ),
+        FFRoute(
+          name: CreateGroupWidget.routeName,
+          path: CreateGroupWidget.routePath,
+          builder: (context, params) => CreateGroupWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -334,7 +329,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/selectGroup';
+            return '/joinGroup';
           }
           return null;
         },

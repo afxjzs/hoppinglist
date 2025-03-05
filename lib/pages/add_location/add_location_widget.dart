@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'add_location_model.dart';
@@ -66,7 +67,7 @@ class _AddLocationWidgetState extends State<AddLocationWidget> {
               size: 24.0,
             ),
             onPressed: () async {
-              context.safePop();
+              context.pushNamed(ListLocationsWidget.routeName);
             },
           ),
           title: Text(
@@ -288,10 +289,8 @@ class _AddLocationWidgetState extends State<AddLocationWidget> {
                                 FlutterFlowTheme.of(context).secondary,
                           ),
                         );
-                        safeSetState(() {
-                          _model.locationNameTextController?.clear();
-                          _model.locationNotesTextController?.clear();
-                        });
+
+                        context.pushNamed(SettingsWidget.routeName);
 
                         safeSetState(() {});
                       },

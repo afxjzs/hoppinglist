@@ -446,6 +446,10 @@ class _EditItemWidgetState extends State<EditItemWidget> {
                         FFButtonWidget(
                           onPressed: () async {
                             if (_model.checkboxGroupValues!.length > 0) {
+                              if (_model.formKey.currentState == null ||
+                                  !_model.formKey.currentState!.validate()) {
+                                return;
+                              }
                               await ItemsTable().update(
                                 data: {
                                   'name': _model.itemNameTextController.text,

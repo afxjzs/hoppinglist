@@ -1,5 +1,6 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'add_location_widget.dart' show AddLocationWidget;
 import 'package:flutter/material.dart';
 
