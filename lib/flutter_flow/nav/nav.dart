@@ -88,14 +88,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : JoinGroupWidget(),
         ),
         FFRoute(
-          name: HomePageWidget.routeName,
-          path: HomePageWidget.routePath,
+          name: MainListWidget.routeName,
+          path: MainListWidget.routePath,
           requireAuth: true,
           builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'HomePage')
+              ? NavBarPage(initialPage: 'MainList')
               : NavBarPage(
-                  initialPage: 'HomePage',
-                  page: HomePageWidget(),
+                  initialPage: 'MainList',
+                  page: MainListWidget(),
                 ),
         ),
         FFRoute(
@@ -131,9 +131,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: SettingsWidget.routeName,
           path: SettingsWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Settings')
-              : SettingsWidget(),
+          builder: (context, params) => SettingsWidget(),
         ),
         FFRoute(
           name: AddLocationWidget.routeName,
@@ -159,6 +157,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: CreateGroupWidget.routeName,
           path: CreateGroupWidget.routePath,
           builder: (context, params) => CreateGroupWidget(),
+        ),
+        FFRoute(
+          name: HomeWidget.routeName,
+          path: HomeWidget.routePath,
+          requireAuth: true,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Home')
+              : NavBarPage(
+                  initialPage: 'Home',
+                  page: HomeWidget(),
+                ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

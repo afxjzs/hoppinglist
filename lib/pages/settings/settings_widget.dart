@@ -63,7 +63,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               size: 24.0,
             ),
             onPressed: () async {
-              context.pushNamed(HomePageWidget.routeName);
+              context.pushNamed(MainListWidget.routeName);
             },
           ),
           title: Text(

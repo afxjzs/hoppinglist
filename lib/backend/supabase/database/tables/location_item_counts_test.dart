@@ -1,28 +1,26 @@
 import '../database.dart';
 
-class LocationItemCountsTable extends SupabaseTable<LocationItemCountsRow> {
+class LocationItemCountsTestTable
+    extends SupabaseTable<LocationItemCountsTestRow> {
   @override
-  String get tableName => 'location_item_counts';
+  String get tableName => 'location_item_counts_test';
 
   @override
-  LocationItemCountsRow createRow(Map<String, dynamic> data) =>
-      LocationItemCountsRow(data);
+  LocationItemCountsTestRow createRow(Map<String, dynamic> data) =>
+      LocationItemCountsTestRow(data);
 }
 
-class LocationItemCountsRow extends SupabaseDataRow {
-  LocationItemCountsRow(Map<String, dynamic> data) : super(data);
+class LocationItemCountsTestRow extends SupabaseDataRow {
+  LocationItemCountsTestRow(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => LocationItemCountsTable();
+  SupabaseTable get table => LocationItemCountsTestTable();
 
   int? get id => getField<int>('id');
   set id(int? value) => setField<int>('id', value);
 
   String? get name => getField<String>('name');
   set name(String? value) => setField<String>('name', value);
-
-  String? get notes => getField<String>('notes');
-  set notes(String? value) => setField<String>('notes', value);
 
   int? get groupId => getField<int>('group_id');
   set groupId(int? value) => setField<int>('group_id', value);

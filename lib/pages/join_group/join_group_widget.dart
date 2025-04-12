@@ -327,7 +327,7 @@ class _JoinGroupWidgetState extends State<JoinGroupWidget> {
                                   .toString(),
                             );
                             _navigate = () => context.goNamedAuth(
-                                HomePageWidget.routeName, context.mounted);
+                                HomeWidget.routeName, context.mounted);
                           } else {
                             await showDialog(
                               context: context,

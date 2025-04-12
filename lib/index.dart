@@ -1,5 +1,5 @@
 // Export pages
-export '/pages/home_page/home_page_widget.dart' show HomePageWidget;
+export '/pages/main_list/main_list_widget.dart' show MainListWidget;
 export '/pages/add_item/add_item_widget.dart' show AddItemWidget;
 export '/pages/edit_item/edit_item_widget.dart' show EditItemWidget;
 export '/pages/list_items/list_items_widget.dart' show ListItemsWidget;
@@ -10,3 +10,4 @@ export '/pages/edit_location/edit_location_widget.dart' show EditLocationWidget;
 export '/pages/list_locations/list_locations_widget.dart'
     show ListLocationsWidget;
 export '/pages/create_group/create_group_widget.dart' show CreateGroupWidget;
+export '/pages/home/home_widget.dart' show HomeWidget;

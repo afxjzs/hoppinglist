@@ -356,64 +356,34 @@ class _AddItemWidgetState extends State<AddItemWidget> {
                                       ),
                                     ],
                                   ),
-                                  FutureBuilder<List<UniqueLocationsViewRow>>(
-                                    future:
-                                        UniqueLocationsViewTable().queryRows(
-                                      queryFn: (q) =>
-                                          q.order('unique_location'),
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      }
-                                      List<UniqueLocationsViewRow>
-                                          checkboxGroupUniqueLocationsViewRowList =
-                                          snapshot.data!;
-
-                                      return FlutterFlowCheckboxGroup(
-                                        options: addItemLocationsRowList
-                                            .map((e) => e.name)
-                                            .toList(),
-                                        onChanged: (val) => safeSetState(() =>
-                                            _model.checkboxGroupValues = val),
-                                        controller: _model
-                                                .checkboxGroupValueController ??=
+                                  FlutterFlowCheckboxGroup(
+                                    options: addItemLocationsRowList
+                                        .map((e) => e.name)
+                                        .toList(),
+                                    onChanged: (val) => safeSetState(
+                                        () => _model.checkboxGroupValues = val),
+                                    controller:
+                                        _model.checkboxGroupValueController ??=
                                             FormFieldController<List<String>>(
-                                          [],
+                                      [],
+                                    ),
+                                    activeColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    checkColor:
+                                        FlutterFlowTheme.of(context).info,
+                                    checkboxBorderColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Space Grotesk',
+                                          letterSpacing: 0.0,
                                         ),
-                                        activeColor:
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                        checkColor:
-                                            FlutterFlowTheme.of(context).info,
-                                        checkboxBorderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Space Grotesk',
-                                              letterSpacing: 0.0,
-                                            ),
-                                        checkboxBorderRadius:
-                                            BorderRadius.circular(4.0),
-                                        initialized:
-                                            _model.checkboxGroupValues != null,
-                                      );
-                                    },
+                                    checkboxBorderRadius:
+                                        BorderRadius.circular(4.0),
+                                    initialized:
+                                        _model.checkboxGroupValues != null,
                                   ),
                                 ].divide(SizedBox(height: 16.0)),
                               ),

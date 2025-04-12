@@ -150,6 +150,7 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                                   fontFamily: 'Space Grotesk',
                                   letterSpacing: 0.0,
                                 ),
+                            hintText: 'Choose a group code',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
@@ -236,6 +237,7 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                                   letterSpacing: 0.0,
                                 ),
                             alignLabelWithHint: false,
+                            hintText: '...and a PIN to secure it',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(

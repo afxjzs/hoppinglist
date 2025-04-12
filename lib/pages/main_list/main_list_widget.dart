@@ -1,6 +1,7 @@
 import '/backend/supabase/supabase.dart';
 import '/components/empty_have/empty_have_widget.dart';
 import '/components/empty_need/empty_need_widget.dart';
+import '/components/main_home_app_bar_content_widget.dart';
 import '/components/need_have_divider/need_have_divider_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -12,22 +13,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import 'main_list_model.dart';
+export 'main_list_model.dart';
 
-class HomePageWidget extends StatefulWidget {
-  const HomePageWidget({super.key});
+class MainListWidget extends StatefulWidget {
+  const MainListWidget({super.key});
 
-  static String routeName = 'HomePage';
-  static String routePath = '/homePage';
+  static String routeName = 'MainList';
+  static String routePath = '/mainList';
 
   @override
-  State<HomePageWidget> createState() => _HomePageWidgetState();
+  State<MainListWidget> createState() => _MainListWidgetState();
 }
 
-class _HomePageWidgetState extends State<HomePageWidget>
+class _MainListWidgetState extends State<MainListWidget>
     with TickerProviderStateMixin {
-  late HomePageModel _model;
+  late MainListModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -36,7 +37,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => HomePageModel());
+    _model = createModel(context, () => MainListModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -168,7 +169,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
     context.watch<FFAppState>();
 
     return StreamBuilder<List<LocationsRow>>(
-      stream: _model.homePageSupabaseStream ??= SupaFlow.client
+      stream: _model.mainListSupabaseStream ??= SupaFlow.client
           .from("locations")
           .stream(primaryKey: ['id'])
           .eqOrNull(
@@ -195,7 +196,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
             ),
           );
         }
-        List<LocationsRow> homePageLocationsRowList = snapshot.data!;
+        List<LocationsRow> mainListLocationsRowList = snapshot.data!;
 
         return GestureDetector(
           onTap: () {
@@ -212,24 +213,12 @@ class _HomePageWidgetState extends State<HomePageWidget>
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 8.0, 0.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        'assets/images/nav_icon.png',
-                        height: 40.0,
-                        fit: BoxFit.cover,
-                      ),
+                  Expanded(
+                    child: wrapWithModel(
+                      model: _model.mainHomeAppBarContentModel,
+                      updateCallback: () => safeSetState(() {}),
+                      child: MainHomeAppBarContentWidget(),
                     ),
-                  ),
-                  Text(
-                    'Hopping List',
-                    style: FlutterFlowTheme.of(context).headlineMedium.override(
-                          fontFamily: 'Plus Jakarta Sans',
-                          color: FlutterFlowTheme.of(context).alwaysLight,
-                          letterSpacing: 0.0,
-                        ),
                   ),
                 ],
               ),
@@ -263,7 +252,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             _model.locationSelectorValue ??=
                                 FFAppState().currentLocationName,
                           ),
-                          options: homePageLocationsRowList
+                          options: mainListLocationsRowList
                               .map((e) => e.name)
                               .toList(),
                           onChanged: (val) async {

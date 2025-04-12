@@ -1,4 +1,3 @@
-import '';
 import '/backend/supabase/supabase.dart';
 import '/components/edit_item_single/edit_item_single_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';

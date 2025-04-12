@@ -218,10 +218,14 @@ dynamic deserializeParam<T>(
         switch (T) {
           case GroupsRow:
             return GroupsRow(data);
+          case LocationItemCountsTestRow:
+            return LocationItemCountsTestRow(data);
           case LocationsRow:
             return LocationsRow(data);
           case LocationItemCountsRow:
             return LocationItemCountsRow(data);
+          case LocationItemCounts2Row:
+            return LocationItemCounts2Row(data);
           case ListItemsRow:
             return ListItemsRow(data);
           case UniqueLocationsViewRow:

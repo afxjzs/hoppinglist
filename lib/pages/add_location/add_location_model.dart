@@ -27,6 +27,8 @@ class AddLocationModel extends FlutterFlowModel<AddLocationWidget> {
   String? Function(BuildContext, String?)? locationNotesTextControllerValidator;
   // Stores action output result for [Backend Call - Insert Row] action in Button widget.
   LocationsRow? locationAddedResult;
+  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
+  List<ItemsRow>? postLocAddItemQuery;
 
   @override
   void initState(BuildContext context) {
