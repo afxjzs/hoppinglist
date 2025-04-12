@@ -368,9 +368,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                               Text(
                                                 dateTimeFormat(
-                                                    "relative",
+                                                    "MMMEd",
                                                     listViewItemsRow
-                                                        .lastNeededAt!),
+                                                        .utmLastNeededAt!),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall

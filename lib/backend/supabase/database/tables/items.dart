@@ -42,4 +42,8 @@ class ItemsRow extends SupabaseDataRow {
 
   int get groupId => getField<int>('group_id')!;
   set groupId(int value) => setField<int>('group_id', value);
+
+  DateTime? get utmLastNeededAt => getField<DateTime>('utm_last_needed_at');
+  set utmLastNeededAt(DateTime? value) =>
+      setField<DateTime>('utm_last_needed_at', value);
 }
