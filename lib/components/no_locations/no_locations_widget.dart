@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'no_locations_model.dart';
 export 'no_locations_model.dart';
 
@@ -65,8 +66,17 @@ class _NoLocationsWidgetState extends State<NoLocationsWidget> {
                 'You have not added \nany locations',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyLarge.override(
-                      fontFamily: 'Space Grotesk',
+                      font: GoogleFonts.spaceGrotesk(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                      ),
                       letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                     ),
               ),
             ),
@@ -81,7 +91,6 @@ class _NoLocationsWidgetState extends State<NoLocationsWidget> {
                   text: 'Add Location',
                   icon: Icon(
                     Icons.add_rounded,
-                    color: FlutterFlowTheme.of(context).alwaysLight,
                     size: 18.0,
                   ),
                   options: FFButtonOptions(
@@ -90,11 +99,24 @@ class _NoLocationsWidgetState extends State<NoLocationsWidget> {
                         EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     iconPadding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    iconColor: FlutterFlowTheme.of(context).alwaysLight,
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                          fontFamily: 'Space Grotesk',
+                          font: GoogleFonts.spaceGrotesk(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontStyle,
+                          ),
                           color: Colors.white,
                           letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
                         ),
                     elevation: 0.0,
                     borderRadius: BorderRadius.circular(24.0),

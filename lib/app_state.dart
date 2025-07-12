@@ -108,6 +108,19 @@ class FFAppState extends ChangeNotifier {
       int index, SingleItemStruct value) {
     NotUsedItemsListDatatype.insert(index, value);
   }
+
+  /// rawForm data to be parsed and augmented
+  dynamic _rawForm;
+  dynamic get rawForm => _rawForm;
+  set rawForm(dynamic value) {
+    _rawForm = value;
+  }
+
+  String _trimmedFormString = '';
+  String get trimmedFormString => _trimmedFormString;
+  set trimmedFormString(String value) {
+    _trimmedFormString = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

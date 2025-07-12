@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'welcome_add_location_model.dart';
 export 'welcome_add_location_model.dart';
 
@@ -51,15 +52,32 @@ class _WelcomeAddLocationWidgetState extends State<WelcomeAddLocationWidget> {
               'Let\'s Get Started',
               textAlign: TextAlign.center,
               style: FlutterFlowTheme.of(context).displaySmall.override(
-                    fontFamily: 'Plus Jakarta Sans',
+                    font: GoogleFonts.plusJakartaSans(
+                      fontWeight:
+                          FlutterFlowTheme.of(context).displaySmall.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).displaySmall.fontStyle,
+                    ),
                     letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).displaySmall.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).displaySmall.fontStyle,
                   ),
             ),
             Text(
               'First step is to add a store',
               style: FlutterFlowTheme.of(context).bodyLarge.override(
-                    fontFamily: 'Space Grotesk',
+                    font: GoogleFonts.spaceGrotesk(
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                    ),
                     letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                    fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                   ),
             ),
           ].divide(SizedBox(height: 12.0)),

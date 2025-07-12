@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'empty_need_model.dart';
 export 'empty_need_model.dart';
 
@@ -53,8 +54,18 @@ class _EmptyNeedWidgetState extends State<EmptyNeedWidget> {
             child: Text(
               'You\'re Done!',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
-                    fontFamily: 'Plus Jakarta Sans',
+                    font: GoogleFonts.plusJakartaSans(
+                      fontWeight: FlutterFlowTheme.of(context)
+                          .headlineMedium
+                          .fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                    ),
                     letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                   ),
             ),
           ),

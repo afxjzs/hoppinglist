@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'main_home_app_bar_content_model.dart';
 export 'main_home_app_bar_content_model.dart';
 
@@ -58,9 +59,18 @@ class _MainHomeAppBarContentWidgetState
         Text(
           'Hopping List',
           style: FlutterFlowTheme.of(context).headlineMedium.override(
-                fontFamily: 'Plus Jakarta Sans',
+                font: GoogleFonts.plusJakartaSans(
+                  fontWeight:
+                      FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                ),
                 color: FlutterFlowTheme.of(context).alwaysLight,
                 letterSpacing: 0.0,
+                fontWeight:
+                    FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                fontStyle:
+                    FlutterFlowTheme.of(context).headlineMedium.fontStyle,
               ),
         ),
         FlutterFlowIconButton(

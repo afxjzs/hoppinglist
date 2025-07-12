@@ -7,6 +7,7 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'join_group_model.dart';
 export 'join_group_model.dart';
@@ -64,10 +65,19 @@ class _JoinGroupWidgetState extends State<JoinGroupWidget> {
           title: Text(
             'Join an Existing Group',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Plus Jakarta Sans',
+                  font: GoogleFonts.plusJakartaSans(
+                    fontWeight:
+                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
                   color: Colors.white,
                   fontSize: 22.0,
                   letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
           actions: [],
@@ -111,8 +121,18 @@ class _JoinGroupWidgetState extends State<JoinGroupWidget> {
                   'Welcome to Hopping List',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).titleLarge.override(
-                        fontFamily: 'Plus Jakarta Sans',
+                        font: GoogleFonts.plusJakartaSans(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleLarge
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
                       ),
                 ),
                 Form(
@@ -146,15 +166,41 @@ class _JoinGroupWidgetState extends State<JoinGroupWidget> {
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Space Grotesk',
+                                  font: GoogleFonts.spaceGrotesk(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Space Grotesk',
+                                  font: GoogleFonts.spaceGrotesk(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 24.0,
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -190,15 +236,37 @@ class _JoinGroupWidgetState extends State<JoinGroupWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Space Grotesk',
+                                    font: GoogleFonts.spaceGrotesk(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 28.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                           textAlign: TextAlign.center,
                           cursorColor: FlutterFlowTheme.of(context).primaryText,
                           validator: _model.groupCodeTextControllerValidator
                               .asValidator(context),
                           inputFormatters: [
+                            if (!isAndroid && !isiOS)
+                              TextInputFormatter.withFunction(
+                                  (oldValue, newValue) {
+                                return TextEditingValue(
+                                  selection: newValue.selection,
+                                  text: newValue.text.toCapitalization(
+                                      TextCapitalization.characters),
+                                );
+                              }),
                             FilteringTextInputFormatter.allow(
                                 RegExp('[a-zA-Z0-9]'))
                           ],
@@ -229,15 +297,41 @@ class _JoinGroupWidgetState extends State<JoinGroupWidget> {
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Space Grotesk',
+                                  font: GoogleFonts.spaceGrotesk(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
                                 ),
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Space Grotesk',
+                                  font: GoogleFonts.spaceGrotesk(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 24.0,
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -273,9 +367,22 @@ class _JoinGroupWidgetState extends State<JoinGroupWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Space Grotesk',
+                                    font: GoogleFonts.spaceGrotesk(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 28.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                           textAlign: TextAlign.center,
                           maxLength: 4,
@@ -285,6 +392,15 @@ class _JoinGroupWidgetState extends State<JoinGroupWidget> {
                           validator: _model.groupPinTextControllerValidator
                               .asValidator(context),
                           inputFormatters: [
+                            if (!isAndroid && !isiOS)
+                              TextInputFormatter.withFunction(
+                                  (oldValue, newValue) {
+                                return TextEditingValue(
+                                  selection: newValue.selection,
+                                  text: newValue.text.toCapitalization(
+                                      TextCapitalization.none),
+                                );
+                              }),
                             FilteringTextInputFormatter.allow(RegExp('[0-9]'))
                           ],
                         ),
@@ -363,10 +479,23 @@ class _JoinGroupWidgetState extends State<JoinGroupWidget> {
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Space Grotesk',
+                                    font: GoogleFonts.spaceGrotesk(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: Colors.white,
                                     fontSize: 24.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                           elevation: 0.0,
                           borderRadius: BorderRadius.circular(28.0),
@@ -382,8 +511,21 @@ class _JoinGroupWidgetState extends State<JoinGroupWidget> {
                     Text(
                       'Don\'t have a group? ',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Space Grotesk',
+                            font: GoogleFonts.spaceGrotesk(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
                             letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
                           ),
                     ),
                     InkWell(
@@ -397,9 +539,22 @@ class _JoinGroupWidgetState extends State<JoinGroupWidget> {
                       child: Text(
                         'Create one',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Space Grotesk',
+                              font: GoogleFonts.spaceGrotesk(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               color: FlutterFlowTheme.of(context).primary,
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                               decoration: TextDecoration.underline,
                             ),
                       ),

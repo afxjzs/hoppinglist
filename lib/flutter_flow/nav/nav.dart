@@ -88,26 +88,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               appStateNotifier.loggedIn ? NavBarPage() : JoinGroupWidget(),
         ),
         FFRoute(
-          name: MainListWidget.routeName,
-          path: MainListWidget.routePath,
-          requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'MainList')
-              : NavBarPage(
-                  initialPage: 'MainList',
-                  page: MainListWidget(),
-                ),
-        ),
+            name: MainListWidget.routeName,
+            path: MainListWidget.routePath,
+            requireAuth: true,
+            builder: (context, params) => params.isEmpty
+                ? NavBarPage(initialPage: 'MainList')
+                : NavBarPage(
+                    initialPage: 'MainList',
+                    page: MainListWidget(),
+                  )),
         FFRoute(
-          name: AddItemWidget.routeName,
-          path: AddItemWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'AddItem')
-              : NavBarPage(
-                  initialPage: 'AddItem',
-                  page: AddItemWidget(),
-                ),
-        ),
+            name: AddItemWidget.routeName,
+            path: AddItemWidget.routePath,
+            builder: (context, params) => params.isEmpty
+                ? NavBarPage(initialPage: 'AddItem')
+                : NavBarPage(
+                    initialPage: 'AddItem',
+                    page: AddItemWidget(),
+                  )),
         FFRoute(
           name: EditItemWidget.routeName,
           path: EditItemWidget.routePath,
@@ -159,16 +157,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => CreateGroupWidget(),
         ),
         FFRoute(
-          name: HomeWidget.routeName,
-          path: HomeWidget.routePath,
-          requireAuth: true,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'Home')
-              : NavBarPage(
-                  initialPage: 'Home',
-                  page: HomeWidget(),
-                ),
-        )
+            name: HomeWidget.routeName,
+            path: HomeWidget.routePath,
+            requireAuth: true,
+            builder: (context, params) => params.isEmpty
+                ? NavBarPage(initialPage: 'Home')
+                : NavBarPage(
+                    initialPage: 'Home',
+                    page: HomeWidget(),
+                  ))
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 

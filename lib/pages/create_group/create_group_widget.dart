@@ -8,6 +8,7 @@ import '/flutter_flow/random_data_util.dart' as random_data;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'create_group_model.dart';
 export 'create_group_model.dart';
@@ -65,10 +66,19 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
           title: Text(
             'Create a New Group',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Plus Jakarta Sans',
+                  font: GoogleFonts.plusJakartaSans(
+                    fontWeight:
+                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
                   color: Colors.white,
                   fontSize: 22.0,
                   letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
           actions: [],
@@ -112,8 +122,18 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                   'Welcome to Hopping List',
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).titleLarge.override(
-                        fontFamily: 'Plus Jakarta Sans',
+                        font: GoogleFonts.plusJakartaSans(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleLarge
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).titleLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleLarge.fontStyle,
                       ),
                 ),
                 Form(
@@ -147,16 +167,42 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Space Grotesk',
+                                  font: GoogleFonts.spaceGrotesk(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
                                 ),
                             hintText: 'Choose a group code',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Space Grotesk',
+                                  font: GoogleFonts.spaceGrotesk(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 24.0,
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -192,9 +238,22 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Space Grotesk',
+                                    font: GoogleFonts.spaceGrotesk(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 28.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                           textAlign: TextAlign.center,
                           maxLength: 12,
@@ -203,6 +262,15 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                           validator: _model.groupCodeTextControllerValidator
                               .asValidator(context),
                           inputFormatters: [
+                            if (!isAndroid && !isiOS)
+                              TextInputFormatter.withFunction(
+                                  (oldValue, newValue) {
+                                return TextEditingValue(
+                                  selection: newValue.selection,
+                                  text: newValue.text.toCapitalization(
+                                      TextCapitalization.characters),
+                                );
+                              }),
                             FilteringTextInputFormatter.allow(
                                 RegExp('[a-zA-Z0-9]'))
                           ],
@@ -233,17 +301,43 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                             labelStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Space Grotesk',
+                                  font: GoogleFonts.spaceGrotesk(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
                                 ),
                             alignLabelWithHint: false,
                             hintText: '...and a PIN to secure it',
                             hintStyle: FlutterFlowTheme.of(context)
                                 .labelMedium
                                 .override(
-                                  fontFamily: 'Space Grotesk',
+                                  font: GoogleFonts.spaceGrotesk(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: 24.0,
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
                                 ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -279,9 +373,22 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                           ),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Space Grotesk',
+                                    font: GoogleFonts.spaceGrotesk(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
                                     fontSize: 28.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
                           textAlign: TextAlign.center,
                           maxLength: 4,
@@ -291,6 +398,15 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                           validator: _model.groupPinTextControllerValidator
                               .asValidator(context),
                           inputFormatters: [
+                            if (!isAndroid && !isiOS)
+                              TextInputFormatter.withFunction(
+                                  (oldValue, newValue) {
+                                return TextEditingValue(
+                                  selection: newValue.selection,
+                                  text: newValue.text.toCapitalization(
+                                      TextCapitalization.none),
+                                );
+                              }),
                             FilteringTextInputFormatter.allow(RegExp('[0-9]'))
                           ],
                         ),
@@ -367,10 +483,23 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Space Grotesk',
+                                    font: GoogleFonts.spaceGrotesk(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
                                     color: Colors.white,
                                     fontSize: 24.0,
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
                                   ),
                           elevation: 0.0,
                           borderRadius: BorderRadius.circular(28.0),
@@ -386,8 +515,21 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                     Text(
                       'Already in a group? ',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Space Grotesk',
+                            font: GoogleFonts.spaceGrotesk(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
                             letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
                           ),
                     ),
                     InkWell(
@@ -401,9 +543,22 @@ class _CreateGroupWidgetState extends State<CreateGroupWidget> {
                       child: Text(
                         'Join here',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Space Grotesk',
+                              font: GoogleFonts.spaceGrotesk(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               color: FlutterFlowTheme.of(context).primary,
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                               decoration: TextDecoration.underline,
                             ),
                       ),

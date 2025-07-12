@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_model.dart';
 export 'home_model.dart';
@@ -100,9 +101,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                     'Needed Items',
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).titleLarge.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          font: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
                         ),
                   ),
                   Padding(
@@ -197,10 +205,22 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           style: FlutterFlowTheme.of(context)
                                               .displayLarge
                                               .override(
-                                                fontFamily: 'Plus Jakarta Sans',
+                                                font:
+                                                    GoogleFonts.plusJakartaSans(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .displayLarge
+                                                          .fontStyle,
+                                                ),
                                                 fontSize: 72.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.bold,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .displayLarge
+                                                        .fontStyle,
                                               ),
                                         ),
                                         Padding(
@@ -212,11 +232,33 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'Space Grotesk',
+                                                  font:
+                                                      GoogleFonts.spaceGrotesk(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryText,
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ),
@@ -230,11 +272,21 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyLarge
                                           .override(
-                                            fontFamily: 'Space Grotesk',
+                                            font: GoogleFonts.spaceGrotesk(
+                                              fontWeight: FontWeight.bold,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .fontStyle,
+                                            ),
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryText,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyLarge
+                                                    .fontStyle,
                                           ),
                                     ),
                                   ],
@@ -249,9 +301,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                   Text(
                     'Latest Needed',
                     style: FlutterFlowTheme.of(context).titleLarge.override(
-                          fontFamily: 'Plus Jakarta Sans',
+                          font: GoogleFonts.plusJakartaSans(
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleLarge
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleLarge.fontStyle,
                         ),
                   ),
                   Padding(
@@ -354,8 +413,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                           context)
                                                       .bodyLarge
                                                       .override(
-                                                        fontFamily:
-                                                            'Space Grotesk',
+                                                        font: GoogleFonts
+                                                            .spaceGrotesk(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyLarge
+                                                                  .fontStyle,
+                                                        ),
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -363,6 +430,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.bold,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .fontStyle,
                                                       ),
                                                 ),
                                               ),
@@ -375,9 +447,30 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodySmall
                                                         .override(
-                                                          fontFamily:
-                                                              'Space Grotesk',
+                                                          font: GoogleFonts
+                                                              .spaceGrotesk(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodySmall
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodySmall
+                                                                  .fontStyle,
                                                         ),
                                               ),
                                             ],

@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'settings_model.dart';
 export 'settings_model.dart';
@@ -69,9 +70,18 @@ class _SettingsWidgetState extends State<SettingsWidget> {
           title: Text(
             'Settings',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Plus Jakarta Sans',
+                  font: GoogleFonts.plusJakartaSans(
+                    fontWeight:
+                        FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineMedium.fontStyle,
+                  ),
                   color: FlutterFlowTheme.of(context).alwaysLight,
                   letterSpacing: 0.0,
+                  fontWeight:
+                      FlutterFlowTheme.of(context).headlineMedium.fontWeight,
+                  fontStyle:
+                      FlutterFlowTheme.of(context).headlineMedium.fontStyle,
                 ),
           ),
           actions: [
@@ -159,9 +169,30 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineLarge
                                                 .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
+                                                  font: GoogleFonts
+                                                      .plusJakartaSans(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineLarge
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineLarge
+                                                            .fontStyle,
+                                                  ),
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLarge
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLarge
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ),
@@ -179,8 +210,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         text: 'Add New Item',
                                         icon: Icon(
                                           Icons.add_circle_outline_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .alwaysLight,
                                           size: 15.0,
                                         ),
                                         options: FFButtonOptions(
@@ -192,17 +221,39 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
+                                          iconColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alwaysLight,
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
                                               .titleSmall
                                               .override(
-                                                fontFamily: 'Space Grotesk',
+                                                font: GoogleFonts.spaceGrotesk(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .alwaysLight,
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
                                               ),
                                           elevation: 0.0,
                                           borderRadius:
@@ -217,8 +268,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         text: 'Edit Items',
                                         icon: Icon(
                                           Icons.edit_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .alwaysLight,
                                           size: 15.0,
                                         ),
                                         options: FFButtonOptions(
@@ -230,17 +279,39 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
+                                          iconColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alwaysLight,
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
                                               .titleSmall
                                               .override(
-                                                fontFamily: 'Space Grotesk',
+                                                font: GoogleFonts.spaceGrotesk(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .alwaysLight,
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
                                               ),
                                           elevation: 0.0,
                                           borderRadius:
@@ -290,9 +361,30 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineLarge
                                                 .override(
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
+                                                  font: GoogleFonts
+                                                      .plusJakartaSans(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineLarge
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineLarge
+                                                            .fontStyle,
+                                                  ),
                                                   letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLarge
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLarge
+                                                          .fontStyle,
                                                 ),
                                           ),
                                         ),
@@ -310,8 +402,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         text: 'Add New Location',
                                         icon: Icon(
                                           Icons.add_circle_outline_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .alwaysLight,
                                           size: 15.0,
                                         ),
                                         options: FFButtonOptions(
@@ -323,17 +413,39 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
+                                          iconColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alwaysLight,
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
                                               .titleSmall
                                               .override(
-                                                fontFamily: 'Space Grotesk',
+                                                font: GoogleFonts.spaceGrotesk(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .alwaysLight,
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
                                               ),
                                           elevation: 0.0,
                                           borderRadius:
@@ -348,8 +460,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                         text: 'Edit Locations',
                                         icon: Icon(
                                           Icons.edit_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .alwaysLight,
                                           size: 15.0,
                                         ),
                                         options: FFButtonOptions(
@@ -361,17 +471,39 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                                           iconPadding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
+                                          iconColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .alwaysLight,
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
                                           textStyle: FlutterFlowTheme.of(
                                                   context)
                                               .titleSmall
                                               .override(
-                                                fontFamily: 'Space Grotesk',
+                                                font: GoogleFonts.spaceGrotesk(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .alwaysLight,
                                                 letterSpacing: 0.0,
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .titleSmall
+                                                        .fontStyle,
                                               ),
                                           elevation: 0.0,
                                           borderRadius:
@@ -392,8 +524,18 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 Text(
                   'Group ID: ${FFAppState().groupcode}',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Space Grotesk',
+                        font: GoogleFonts.spaceGrotesk(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
                 ),
                 InkWell(
@@ -458,9 +600,22 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       textStyle: FlutterFlowTheme.of(context)
                           .titleSmall
                           .override(
-                            fontFamily: 'Space Grotesk',
+                            font: GoogleFonts.spaceGrotesk(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .fontStyle,
+                            ),
                             color: FlutterFlowTheme.of(context).secondaryText,
                             letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .fontStyle,
                           ),
                       elevation: 0.0,
                       borderSide: BorderSide(
@@ -476,8 +631,20 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   child: Text(
                     'Made with 🩷by Doug',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Space Grotesk',
+                          font: GoogleFonts.spaceGrotesk(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
                   ),
                 ),

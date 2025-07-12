@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'need_have_divider_model.dart';
 export 'need_have_divider_model.dart';
 
@@ -55,9 +56,18 @@ class _NeedHaveDividerWidgetState extends State<NeedHaveDividerWidget> {
               Text(
                 'Need   |   Have',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Space Grotesk',
+                      font: GoogleFonts.spaceGrotesk(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      ),
                       fontSize: 17.0,
                       letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                     ),
               ),
               Icon(

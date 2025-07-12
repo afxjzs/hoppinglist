@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'edit_item_single_model.dart';
 export 'edit_item_single_model.dart';
 
@@ -91,25 +92,64 @@ class _EditItemSingleWidgetState extends State<EditItemSingleWidget> {
                       Text(
                         widget.parameter1!,
                         style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              font: GoogleFonts.plusJakartaSans(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .fontStyle,
+                              ),
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .fontStyle,
                             ),
                       ),
                       Text(
                         widget.parameter2!,
                         textAlign: TextAlign.start,
                         style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'Space Grotesk',
+                              font: GoogleFonts.spaceGrotesk(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .fontStyle,
+                              ),
                               color: FlutterFlowTheme.of(context).secondaryText,
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontStyle,
                             ),
                       ),
                       Text(
                         widget.parameter3!,
                         style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'Space Grotesk',
+                              font: GoogleFonts.spaceGrotesk(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .fontStyle,
+                              ),
                               color: FlutterFlowTheme.of(context).secondaryText,
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontStyle,
                             ),
                       ),
                     ],

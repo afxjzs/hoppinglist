@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'edit_location_single_model.dart';
 export 'edit_location_single_model.dart';
 
@@ -92,17 +93,43 @@ class _EditLocationSingleWidgetState extends State<EditLocationSingleWidget> {
                       Text(
                         widget.name!,
                         style: FlutterFlowTheme.of(context).titleLarge.override(
-                              fontFamily: 'Plus Jakarta Sans',
+                              font: GoogleFonts.plusJakartaSans(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .titleLarge
+                                    .fontStyle,
+                              ),
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .titleLarge
+                                  .fontStyle,
                             ),
                       ),
                       Text(
                         widget.notes!,
                         textAlign: TextAlign.start,
                         style: FlutterFlowTheme.of(context).bodySmall.override(
-                              fontFamily: 'Space Grotesk',
+                              font: GoogleFonts.spaceGrotesk(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .fontStyle,
+                              ),
                               color: FlutterFlowTheme.of(context).secondaryText,
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodySmall
+                                  .fontStyle,
                             ),
                       ),
                     ],
@@ -113,8 +140,20 @@ class _EditLocationSingleWidgetState extends State<EditLocationSingleWidget> {
                   child: Text(
                     '(${widget.numitems?.toString()})',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Space Grotesk',
+                          font: GoogleFonts.spaceGrotesk(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
                           letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
                   ),
                 ),

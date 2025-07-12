@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'no_recently_added_items_model.dart';
 export 'no_recently_added_items_model.dart';
 
@@ -63,8 +64,16 @@ class _NoRecentlyAddedItemsWidgetState
               'No items have been recently \nmarked as needed',
               textAlign: TextAlign.center,
               style: FlutterFlowTheme.of(context).bodyLarge.override(
-                    fontFamily: 'Space Grotesk',
+                    font: GoogleFonts.spaceGrotesk(
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                    ),
                     letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                    fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
                   ),
             ),
           ),

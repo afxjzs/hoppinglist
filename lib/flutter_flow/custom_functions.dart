@@ -16,3 +16,14 @@ DateTime? oneYearFromNow() {
   // this currently returns an int but i need it to return a datetime
   return DateTime.now().add(Duration(days: 365));
 }
+
+dynamic trimFormFields(dynamic inputData) {
+  return {
+    for (final key in inputData.keys)
+      key: inputData[key] is String ? inputData[key].trim() : inputData[key]
+  };
+}
+
+String? trimString(String inputText) {
+  return inputText.trim();
+}
